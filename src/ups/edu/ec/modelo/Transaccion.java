@@ -21,6 +21,47 @@ public abstract class Transaccion implements Serializable {
 		this.montoParcial=montoParcial;
 		this.montoTotal=montoTotal;
 	}
+	
+
+	public int getTran_id() {
+		return tran_id;
+	}
+
+	public void setTran_id(int tran_id) {
+		this.tran_id = tran_id;
+	}
+
+	public String getTran_estado() {
+		return tran_estado;
+	}
+
+	public void setTran_estado(String tran_estado) {
+		this.tran_estado = tran_estado;
+	}
+
+	public String getTran_descripcion() {
+		return tran_descripcion;
+	}
+
+	public void setTran_descripcion(String tran_descripcion) {
+		this.tran_descripcion = tran_descripcion;
+	}
+
+	public double getMontoParcial() {
+		return montoParcial;
+	}
+
+	public void setMontoParcial(double montoParcial) {
+		this.montoParcial = montoParcial;
+	}
+
+	public double getMontoTotal() {
+		return montoTotal;
+	}
+
+	public void setMontoTotal(double montoTotal) {
+		this.montoTotal = montoTotal;
+	}
 
 	@Override
 	public int hashCode() {

@@ -43,13 +43,48 @@ public class CertificadoMedico implements Serializable{
 	public void setCer_medico(Medico cer_medico) {
 		this.cer_medico = cer_medico;
 	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + cer_id;
+		result = prime * result + ((cer_medico == null) ? 0 : cer_medico.hashCode());
+		result = prime * result + ((cer_motivo == null) ? 0 : cer_motivo.hashCode());
+		result = prime * result + ((cer_paciente == null) ? 0 : cer_paciente.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CertificadoMedico other = (CertificadoMedico) obj;
+		if (cer_id != other.cer_id)
+			return false;
+		if (cer_medico == null) {
+			if (other.cer_medico != null)
+				return false;
+		} else if (!cer_medico.equals(other.cer_medico))
+			return false;
+		if (cer_motivo == null) {
+			if (other.cer_motivo != null)
+				return false;
+		} else if (!cer_motivo.equals(other.cer_motivo))
+			return false;
+		if (cer_paciente == null) {
+			if (other.cer_paciente != null)
+				return false;
+		} else if (!cer_paciente.equals(other.cer_paciente))
+			return false;
+		return true;
+	}
 	@Override
 	public String toString() {
 		return "CertificadoMedico [cer_id=" + cer_id + ", cer_motivo=" + cer_motivo + ", cer_paciente=" + cer_paciente
 				+ ", cer_medico=" + cer_medico + "]";
 	}
-
-	
-	
-	
 }
