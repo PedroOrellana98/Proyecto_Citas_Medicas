@@ -128,7 +128,7 @@ public class index extends JFrame {
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			/*	char[] clave= password.getPassword();
+				char[] clave= password.getPassword();
 				
 				String clavef =new  String(clave);
 				
@@ -136,10 +136,10 @@ public class index extends JFrame {
 					dispose();
 					JOptionPane.showMessageDialog(null,"Ingresando al sistema","Ingresar", JOptionPane.INFORMATION_MESSAGE);
 					psecretaria ps=new psecretaria();
-					//ps.setVisible(true);
+					ps.setVisible(true);
 				}else {
 					JOptionPane.showMessageDialog(null, "Datos Incorrectos","ERROR",JOptionPane.ERROR_MESSAGE);
-				}*/
+				}
 			}
 		});
 		btnNewButton.setIcon(new ImageIcon(index.class.getResource("/imagen/Enter_OFF.png")));
