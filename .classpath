@@ -2,7 +2,9 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="D:/Junit/junit-4.13.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jdura/Dropbox (Anterior)/Mi PC (LAPTOP-J4T70UBU)/Downloads/junit-4.13.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="C:/Users/jdura/Dropbox (Anterior)/Mi PC (LAPTOP-J4T70UBU)/Downloads/mysql-connector-java-5.1.16-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jdura/Dropbox (Anterior)/Mi PC (LAPTOP-J4T70UBU)/Downloads/marvel-comic-search-master.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

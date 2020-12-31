@@ -25,8 +25,9 @@ import javax.swing.JSlider;
 import javax.swing.JDesktopPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JCheckBoxMenuItem;
 
-public class index extends JFrame {
+public class psecretaria extends JFrame {
 
 	private JPanel contentPane;
 	private JPasswordField password;
@@ -36,6 +37,8 @@ public class index extends JFrame {
 	private JTextField txtRegistroPasiente;
 	private JTextField txtAgendarCitasMedicas;
 	private JTextField txtRegistroDeCitas;
+	private JTextField txtRegistroEspecialidad;
+	private JTextField txtRegistroMedico;
 
 	/**
 	 * Launch the application.
@@ -56,9 +59,9 @@ public class index extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public index() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 658, 514);
+	public  psecretaria() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 952, 514);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -77,13 +80,6 @@ public class index extends JFrame {
 		lblNewLabel.setBackground(new Color(244, 164, 96));
 		lblNewLabel.setBounds(27, 209, 112, 20);
 		panel.add(lblNewLabel);
-		
-		JLabel lblPassword = new JLabel("PASSWORD:");
-		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblPassword.setForeground(new Color(244, 164, 96));
-		lblPassword.setBackground(new Color(244, 164, 96));
-		lblPassword.setBounds(27, 301, 112, 20);
-		panel.add(lblPassword);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(index.class.getResource("/imagen/icons8_User_96px_2.png")));
@@ -120,37 +116,10 @@ public class index extends JFrame {
 		separator_1.setBounds(27, 360, 161, 14);
 		panel.add(separator_1);
 		
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(index.class.getResource("/imagen/icons8_Key_32px.png")));
-		lblNewLabel_3.setBounds(27, 332, 32, 26);
-		panel.add(lblNewLabel_3);
-		
-		JButton btnNewButton = new JButton("");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			/*	char[] clave= password.getPassword();
-				
-				String clavef =new  String(clave);
-				
-				if (Usuario.getText().equals("Admin") && clavef.equals("admin") ) {
-					dispose();
-					JOptionPane.showMessageDialog(null,"Ingresando al sistema","Ingresar", JOptionPane.INFORMATION_MESSAGE);
-					psecretaria ps=new psecretaria();
-					//ps.setVisible(true);
-				}else {
-					JOptionPane.showMessageDialog(null, "Datos Incorrectos","ERROR",JOptionPane.ERROR_MESSAGE);
-				}*/
-			}
-		});
-		btnNewButton.setIcon(new ImageIcon(index.class.getResource("/imagen/Enter_OFF.png")));
-		btnNewButton.setBounds(47, 396, 125, 41);
-		btnNewButton.setBorder(null);
-		panel.add(btnNewButton);
-		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255));
 		panel_1.setBorder(new LineBorder(Color.RED));
-		panel_1.setBounds(219, 0, 423, 73);
+		panel_1.setBounds(219, 0, 717, 73);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -174,19 +143,14 @@ public class index extends JFrame {
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(255, 255, 255));
-		panel_2.setBounds(219, 72, 423, 403);
+		panel_2.setBounds(219, 72, 717, 403);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
 		JLabel lblNewLabel_5 = new JLabel("");
 		lblNewLabel_5.setIcon(new ImageIcon(index.class.getResource("/imagen/icons8_Today_96px.png")));
-		lblNewLabel_5.setBounds(75, 11, 101, 124);
+		lblNewLabel_5.setBounds(417, 185, 101, 124);
 		panel_2.add(lblNewLabel_5);
-		
-		JLabel lblNewLabel_5_1 = new JLabel("");
-		lblNewLabel_5_1.setIcon(new ImageIcon(index.class.getResource("/imagen/icons8_User_96px_2.png")));
-		lblNewLabel_5_1.setBounds(258, 11, 101, 124);
-		panel_2.add(lblNewLabel_5_1);
 		
 		JLabel lblNewLabel_5_1_1 = new JLabel("");
 		lblNewLabel_5_1_1.setIcon(new ImageIcon(index.class.getResource("/imagen/agenda.png")));
@@ -202,7 +166,7 @@ public class index extends JFrame {
 		txtCalendarioMedico.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
 		txtCalendarioMedico.setForeground(new Color(244, 164, 96));
 		txtCalendarioMedico.setText("Calendario Medico");
-		txtCalendarioMedico.setBounds(61, 136, 126, 20);
+		txtCalendarioMedico.setBounds(396, 320, 126, 20);
 		txtCalendarioMedico.setBorder(null);
 		panel_2.add(txtCalendarioMedico);
 		txtCalendarioMedico.setColumns(10);
@@ -233,5 +197,57 @@ public class index extends JFrame {
 		txtRegistroDeCitas.setBorder(null);
 		txtRegistroDeCitas.setBounds(250, 320, 126, 20);
 		panel_2.add(txtRegistroDeCitas);
+		
+		JButton btnRegistro = new JButton("");
+		btnRegistro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//pregistro pr=new pregistro();
+				//pr.setVisible(true);
+			}
+		});
+		btnRegistro.setIcon(new ImageIcon(psecretaria.class.getResource("/imagen/icons8_User_96px_2.png")));
+		btnRegistro.setBackground(null);
+		btnRegistro.setBorder(null);
+		btnRegistro.setBounds(258, 39, 89, 86);
+		panel_2.add(btnRegistro);
+		
+		JButton btnRegistro_1 = new JButton("");
+		btnRegistro_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			//	pespecialidad pe=new pespecialidad();
+				//pe.setVisible(true);
+			}
+		});
+		btnRegistro_1.setIcon(new ImageIcon(psecretaria.class.getResource("/imagen/cientifico.png")));
+		btnRegistro_1.setBorder(null);
+		btnRegistro_1.setBackground((Color) null);
+		btnRegistro_1.setBounds(418, 39, 89, 86);
+		panel_2.add(btnRegistro_1);
+		
+		txtRegistroEspecialidad = new JTextField();
+		txtRegistroEspecialidad.setText("Registro Especialidad");
+		txtRegistroEspecialidad.setForeground(new Color(244, 164, 96));
+		txtRegistroEspecialidad.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
+		txtRegistroEspecialidad.setColumns(10);
+		txtRegistroEspecialidad.setBorder(null);
+		txtRegistroEspecialidad.setBounds(396, 136, 143, 20);
+		panel_2.add(txtRegistroEspecialidad);
+		
+		JButton btnRegistro_1_1 = new JButton("");
+		btnRegistro_1_1.setIcon(new ImageIcon(psecretaria.class.getResource("/imagen/doctor.png")));
+		btnRegistro_1_1.setBorder(null);
+		btnRegistro_1_1.setBackground((Color) null);
+		btnRegistro_1_1.setBounds(75, 39, 89, 86);
+		panel_2.add(btnRegistro_1_1);
+		
+		txtRegistroMedico = new JTextField();
+		txtRegistroMedico.setText("Registro Medico");
+		txtRegistroMedico.setForeground(new Color(244, 164, 96));
+		txtRegistroMedico.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
+		txtRegistroMedico.setColumns(10);
+		txtRegistroMedico.setBorder(null);
+		txtRegistroMedico.setBounds(75, 136, 126, 20);
+		panel_2.add(txtRegistroMedico);
 	}
 }
