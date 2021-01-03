@@ -193,8 +193,9 @@ public class psecretaria extends JFrame {
 		JButton btnRegistro_1 = new JButton("");
 		btnRegistro_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			//	pespecialidad pe=new pespecialidad();
-				//pe.setVisible(true);
+				pespecialidad pe=new pespecialidad();
+				pe.setVisible(true);
+				
 			}
 		});
 		btnRegistro_1.setIcon(new ImageIcon(psecretaria.class.getResource("/imagen/cientifico.png")));
