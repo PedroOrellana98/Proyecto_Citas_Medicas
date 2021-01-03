@@ -30,8 +30,6 @@ import javax.swing.JCheckBoxMenuItem;
 public class psecretaria extends JFrame {
 
 	private JPanel contentPane;
-	private JPasswordField password;
-	private JTextField Usuario;
 	private JTextField textField;
 	private JTextField txtCalendarioMedico;
 	private JTextField txtRegistroPasiente;
@@ -39,6 +37,7 @@ public class psecretaria extends JFrame {
 	private JTextField txtRegistroDeCitas;
 	private JTextField txtRegistroEspecialidad;
 	private JTextField txtRegistroMedico;
+	JTextField secUsuario;
 
 	/**
 	 * Launch the application.
@@ -74,47 +73,26 @@ public class psecretaria extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("USUARIO:");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel.setForeground(new Color(244, 164, 96));
-		lblNewLabel.setBackground(new Color(244, 164, 96));
-		lblNewLabel.setBounds(27, 209, 112, 20);
-		panel.add(lblNewLabel);
-		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(index.class.getResource("/imagen/icons8_User_96px_2.png")));
-		lblNewLabel_1.setBounds(47, 59, 96, 116);
+		lblNewLabel_1.setBounds(63, 59, 96, 116);
 		panel.add(lblNewLabel_1);
 		
-		password = new JPasswordField();
-		password.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		password.setBounds(60, 332, 146, 28);
-		password.setBorder(null);
-		panel.add(password);
+		secUsuario = new JTextField();
+		secUsuario.setToolTipText("");
+		secUsuario.setFont(new Font("Sitka Small", Font.BOLD | Font.ITALIC, 24));
+		secUsuario.setEditable(false);
+		secUsuario.setDropMode(DropMode.INSERT);
+		secUsuario.setColumns(10);
+		secUsuario.setBorder(null);
+		secUsuario.setBackground(Color.WHITE);
+		secUsuario.setBounds(47, 207, 146, 42);
+		panel.add(secUsuario);
 		
-		Usuario = new JTextField();
-		Usuario.setToolTipText("");
-		Usuario.setBounds(60, 251, 146, 20);
-		Usuario.setBorder(null);
-		panel.add(Usuario);
-		Usuario.setColumns(10);
-		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(index.class.getResource("/imagen/icons8_customer_32px_1.png")));
-		lblNewLabel_2.setBounds(27, 240, 32, 31);
-		panel.add(lblNewLabel_2);
-		
-		JSeparator separator = new JSeparator();
-		separator.setBackground(new Color(0, 0, 0));
-		separator.setForeground(new Color(0, 0, 0));
-		separator.setBounds(27, 271, 161, 14);
-		panel.add(separator);
-		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setForeground(Color.BLACK);
-		separator_1.setBackground(Color.BLACK);
-		separator_1.setBounds(27, 360, 161, 14);
-		panel.add(separator_1);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(psecretaria.class.getResource("/imagen/pizarra.png")));
+		lblNewLabel.setBounds(47, 270, 146, 142);
+		panel.add(lblNewLabel);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255));
@@ -127,18 +105,18 @@ public class psecretaria extends JFrame {
 		textField.setToolTipText("");
 		textField.setColumns(10);
 		textField.setBorder(null);
-		textField.setBounds(149, 39, 179, 20);
+		textField.setBounds(267, 28, 179, 20);
 		panel_1.add(textField);
 		
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setForeground(Color.BLACK);
 		separator_2.setBackground(Color.BLACK);
-		separator_2.setBounds(149, 59, 161, 14);
+		separator_2.setBounds(267, 48, 161, 14);
 		panel_1.add(separator_2);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setIcon(new ImageIcon(index.class.getResource("/imagen/icons8_Search_32px_2.png")));
-		lblNewLabel_4.setBounds(108, 30, 54, 32);
+		lblNewLabel_4.setBounds(226, 19, 54, 32);
 		panel_1.add(lblNewLabel_4);
 		
 		JPanel panel_2 = new JPanel();

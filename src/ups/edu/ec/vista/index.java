@@ -125,27 +125,29 @@ public class index extends JFrame {
 		lblNewLabel_3.setBounds(27, 332, 32, 26);
 		panel.add(lblNewLabel_3);
 		
-		JButton btnNewButton = new JButton("");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton entrar = new JButton("");
+		entrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				char[] clave= password.getPassword();
 				
 				String clavef =new  String(clave);
 				
-				if (Usuario.getText().equals("Admin") && clavef.equals("admin") ) {
+				if (Usuario.getText().equals("Secretaria") && clavef.equals("admin") ) {
 					dispose();
 					JOptionPane.showMessageDialog(null,"Ingresando al sistema","Ingresar", JOptionPane.INFORMATION_MESSAGE);
 					psecretaria ps=new psecretaria();
-					ps.setVisible(true);
+					ps.setVisible(true);					
+					String inf=Usuario.getText();
+					ps.secUsuario.setText(inf);
 				}else {
 					JOptionPane.showMessageDialog(null, "Datos Incorrectos","ERROR",JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
-		btnNewButton.setIcon(new ImageIcon(index.class.getResource("/imagen/Enter_OFF.png")));
-		btnNewButton.setBounds(47, 396, 125, 41);
-		btnNewButton.setBorder(null);
-		panel.add(btnNewButton);
+		entrar.setIcon(new ImageIcon(index.class.getResource("/imagen/Enter_OFF.png")));
+		entrar.setBounds(47, 396, 125, 41);
+		entrar.setBorder(null);
+		panel.add(entrar);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255));
