@@ -214,6 +214,12 @@ public class psecretaria extends JFrame {
 		panel_2.add(txtRegistroEspecialidad);
 		
 		JButton btnRegistro_1_1 = new JButton("");
+		btnRegistro_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pmedico pm=new pmedico();
+				pm.setVisible(true);
+			}
+		});
 		btnRegistro_1_1.setIcon(new ImageIcon(psecretaria.class.getResource("/imagen/doctor.png")));
 		btnRegistro_1_1.setBorder(null);
 		btnRegistro_1_1.setBackground((Color) null);
