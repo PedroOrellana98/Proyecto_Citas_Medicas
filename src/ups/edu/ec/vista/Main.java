@@ -8,7 +8,8 @@ public class Main {
 		
 		ControladorFactura cf = new ControladorFactura();
 		
-		cf.ejecutarConsulta();
+		cf.selectFacturaCabecera();
+		cf.selectFacturaDetalle();
 
 	}
 
