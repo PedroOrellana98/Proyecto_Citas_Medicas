@@ -1,11 +1,15 @@
 package ups.edu.ec.vista;
 
+import ups.edu.ec.controlador.ControladorFactura;
+
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		index i = new index();
-		i.setVisible(true);
+		
+		ControladorFactura cf = new ControladorFactura();
+		
+		cf.ejecutarConsulta();
+
 	}
 
 }
