@@ -16,9 +16,9 @@ import com.mysql.jdbc.Driver;
 
 
 public class Conexion {
-	
+	Connection con=null;
 	public Connection getConnection() {
-		Connection con=null;
+		
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -39,5 +39,22 @@ public class Conexion {
 		return con;
 
 	}
+	
+	public void ejecutarConsulta() {
+		try {
+		   String SQL = "SELECT * FROM Horario";
+		   Statement stmt = con.createStatement();
+		   ResultSet rs = stmt.executeQuery(SQL);
+
+		   while (rs.next()) {
+		   System.out.println(rs.getString("idHorario") + "|" + rs.getString("horaIngreso")+ "|"+rs.getString("horaSalida"));
+		}
+		  rs.close();
+		  stmt.close();
+		}
+		catch (Exception e) {
+		  e.printStackTrace();
+		}
+		}
 
 }
