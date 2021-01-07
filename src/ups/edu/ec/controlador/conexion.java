@@ -22,11 +22,11 @@ public class conexion {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String url= "jdbc:mysql://localhost/citasmedicas";
+			String url= "jdbc:mysql://localhost:8889/citas_medicas";
 			String usuario="root";
-			String clave="admin";
+			String clave="root";
 			
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/medico?useTimezone=true&serverTimezone=UTC", "root", "admin");
+			con = DriverManager.getConnection(url,usuario,clave);
 			
 		} catch (ClassNotFoundException e) {
 			System.out.println("Error al cargar el Driver");
