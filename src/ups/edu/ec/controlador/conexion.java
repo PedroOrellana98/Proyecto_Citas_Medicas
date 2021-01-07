@@ -12,21 +12,18 @@ import com.mysql.cj.MysqlConnection;
 import com.mysql.cj.xdevapi.Result;
 import com.mysql.jdbc.Driver;
 
-
-
-
-public class conexion {
+public class Conexion {
 	
 	public Connection getConnection() {
 		Connection con=null;
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String url= "jdbc:mysql://localhost/citasmedicas";
+			String url= "jdbc:mysql://localhost:3306/citas_medicas?useTimezone=true&serverTimezone=UTC";
 			String usuario="root";
-			String clave="admin";
+			String clave="Patito.123";
 			
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/medico?useTimezone=true&serverTimezone=UTC", "root", "admin");
+			con = DriverManager.getConnection(url, usuario, clave);
 			
 		} catch (ClassNotFoundException e) {
 			System.out.println("Error al cargar el Driver");
