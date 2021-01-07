@@ -24,7 +24,7 @@ public class Conexion {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String url= "jdbc:mysql://localhost:8889/citas_medicas";
 			String usuario="root";
-			String clave="root";
+			String clave="root"; ////// clave de la base de datos
 			
 			con = DriverManager.getConnection(url,usuario,clave);
 			System.out.println("Se conecto :)");
