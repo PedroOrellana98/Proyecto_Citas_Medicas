@@ -97,7 +97,7 @@ public class busqueda extends JFrame {
 					
 					PreparedStatement ps = null;
 					ResultSet rs=null; 
-					conexion Con = new conexion();
+					Conexion Con = new Conexion();
 		            Connection con = Con.getConnection();
 		            
 		            String sql="SELECT codigo,nombre FROM especialidades";
@@ -172,7 +172,7 @@ public class busqueda extends JFrame {
 					
 					PreparedStatement ps = null;
 					ResultSet rs=null; 
-					conexion Con = new conexion();
+					Conexion Con = new Conexion();
 		            Connection con = Con.getConnection();
 		            
 		            String sql="SELECT codigo,nombre FROM especialidades "+ where;
