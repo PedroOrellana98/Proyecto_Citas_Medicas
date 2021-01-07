@@ -12,18 +12,22 @@ import com.mysql.cj.MysqlConnection;
 import com.mysql.cj.xdevapi.Result;
 import com.mysql.jdbc.Driver;
 
+
+
+
 public class Conexion {
-	
+	Connection con=null;
 	public Connection getConnection() {
-		Connection con=null;
+		
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String url= "jdbc:mysql://localhost:3306/citas_medicas?useTimezone=true&serverTimezone=UTC";
+			String url= "jdbc:mysql://localhost:8889/citas_medicas";
 			String usuario="root";
-			String clave="Patito.123";
-			con = DriverManager.getConnection(url, usuario, clave);
+			String clave="root";
 			
+			con = DriverManager.getConnection(url,usuario,clave);
+			System.out.println("Se conecto :)");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Error al cargar el Driver");
 			e.printStackTrace();
@@ -35,5 +39,22 @@ public class Conexion {
 		return con;
 
 	}
+	
+	public void ejecutarConsulta() {
+		try {
+		   String SQL = "SELECT * FROM Horario";
+		   Statement stmt = con.createStatement();
+		   ResultSet rs = stmt.executeQuery(SQL);
+
+		   while (rs.next()) {
+		   System.out.println(rs.getString("idHorario") + "|" + rs.getString("horaIngreso")+ "|"+rs.getString("horaSalida"));
+		}
+		  rs.close();
+		  stmt.close();
+		}
+		catch (Exception e) {
+		  e.printStackTrace();
+		}
+		}
 
 }
