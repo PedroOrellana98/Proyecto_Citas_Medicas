@@ -22,7 +22,6 @@ public class Conexion {
 			String url= "jdbc:mysql://localhost:3306/citas_medicas?useTimezone=true&serverTimezone=UTC";
 			String usuario="root";
 			String clave="Patito.123";
-			
 			con = DriverManager.getConnection(url, usuario, clave);
 			
 		} catch (ClassNotFoundException e) {
