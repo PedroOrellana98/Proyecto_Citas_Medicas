@@ -15,7 +15,7 @@ import com.mysql.jdbc.Driver;
 
 
 
-public class conexion {
+public class Conexion {
 	
 	public Connection getConnection() {
 		Connection con=null;
@@ -27,7 +27,7 @@ public class conexion {
 			String clave="root";
 			
 			con = DriverManager.getConnection(url,usuario,clave);
-			
+			System.out.println("Se conecto :)");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Error al cargar el Driver");
 			e.printStackTrace();

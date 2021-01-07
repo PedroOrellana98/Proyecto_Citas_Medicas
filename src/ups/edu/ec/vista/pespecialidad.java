@@ -133,7 +133,7 @@ public class pespecialidad extends JFrame {
 					
 					PreparedStatement ps = null;
 					ResultSet rs=null; 
-					conexion Con = new conexion();
+					Conexion Con = new Conexion();
 		            Connection con = Con.getConnection();
 		            
 		            String sql="SELECT codigo,nombre FROM especialidades";
@@ -174,7 +174,7 @@ public class pespecialidad extends JFrame {
 		        try {
 		        	
 		        	
-		            conexion Con = new conexion();
+		            Conexion Con = new Conexion();
 		            Connection con = Con.getConnection();
 		            System.out.println("hola");
 		            ps = con.prepareStatement("INSERT INTO especialidades (codigo,nombre) VALUES (?,?)");

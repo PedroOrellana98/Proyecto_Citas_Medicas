@@ -229,7 +229,7 @@ public class pregistro extends JFrame {
 		        try {
 		        	
 		        	
-		            conexion Con = new conexion();
+		            Conexion Con = new Conexion();
 		            Connection con = Con.getConnection();
 		            System.out.println("hola");
 		            ps = con.prepareStatement("INSERT INTO usuarios (nombres, cedula, apellidos, direccion,telefono,email) VALUES (?,?,?,?,?,?)");
@@ -262,7 +262,7 @@ public class pregistro extends JFrame {
 					
 					PreparedStatement ps = null;
 					ResultSet rs=null; 
-					conexion Con = new conexion();
+					Conexion Con = new Conexion();
 		            Connection con = Con.getConnection();
 		            
 		            String sql="SELECT nombres,apellidos,cedula,direccion,telefono,email FROM usuarios";
@@ -316,7 +316,7 @@ public class pregistro extends JFrame {
 					DefaultTableModel modelo=new DefaultTableModel();
 					tableusu.setModel(modelo);
 					 		
-					conexion Con = new conexion();
+					Conexion Con = new Conexion();
 		            Connection con = Con.getConnection();
 		            
 		            int Fila=tableusu.getSelectedRow();
@@ -377,7 +377,7 @@ public class pregistro extends JFrame {
 					
 					PreparedStatement ps = null;
 					ResultSet rs=null; 
-					conexion Con = new conexion();
+					Conexion Con = new Conexion();
 		            Connection con = Con.getConnection();
 		            
 		            String sql="SELECT nombres,apellidos,cedula,direccion,telefono,email FROM usuarios "+ where;
