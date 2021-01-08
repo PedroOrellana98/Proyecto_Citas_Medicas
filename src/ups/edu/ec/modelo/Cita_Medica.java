@@ -11,18 +11,19 @@ public class Cita_Medica implements Serializable {
 	private Paciente cit_paciente;
 	private Medico cit_medico;
 	private Secretaria secre;
-	
+
 	public Cita_Medica() {
-		
+
 	}
-	
-	public Cita_Medica( int cit_id,Date cit_fecha,String cit_hora,Paciente cit_paciente,Medico cit_medico,Secretaria secre) {
-		this.cit_id=cit_id;
-		this.cit_fecha=cit_fecha;
-		this.cit_hora=cit_hora;
-		this.cit_paciente=cit_paciente;
-		this.cit_medico=cit_medico;
-		this.secre=secre;
+
+	public Cita_Medica(int cit_id, Date cit_fecha, String cit_hora, Paciente cit_paciente, Medico cit_medico,
+			Secretaria secre) {
+		this.cit_id = cit_id;
+		this.cit_fecha = cit_fecha;
+		this.cit_hora = cit_hora;
+		this.cit_paciente = cit_paciente;
+		this.cit_medico = cit_medico;
+		this.secre = secre;
 	}
 
 	public int getCit_id() {
@@ -130,5 +131,5 @@ public class Cita_Medica implements Serializable {
 		return "Cita_Medica [cit_id=" + cit_id + ", cit_fecha=" + cit_fecha + ", cit_hora=" + cit_hora
 				+ ", cit_paciente=" + cit_paciente + ", cit_medico=" + cit_medico + ", secre=" + secre + "]";
 	}
-	
+
 }
