@@ -7,11 +7,11 @@ import java.sql.Statement;
 import java.sql.Time;
 
 public class ControladorHorario {
-	
+
 	public static int idHorario;
 
 	Conexion conexionBD = new Conexion();
-	
+
 	public int ObtenerMaximaId() {// METODO OBTENER MAXIMA ID
 
 		conexionBD.getConnection();
@@ -21,7 +21,7 @@ public class ControladorHorario {
 			Statement stmt = conexionBD.con.createStatement();
 			ResultSet rs = stmt.executeQuery(SQL);
 			idHorario = 0;
-			
+
 			while (rs.next()) {
 				idHorario = rs.getInt("idHorario");
 			}
@@ -31,7 +31,7 @@ public class ControladorHorario {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return idHorario;
 	}// METODO OBTENER MAXIMA ID
 
@@ -44,20 +44,21 @@ public class ControladorHorario {
 			ResultSet rs = stmt.executeQuery(SQL);
 
 			while (rs.next()) {
-				System.out.println(rs.getInt("idHorario") + "|" + rs.getTime("horaIngreso") + "|" + rs.getTime("horaSalida"));
+				System.out.println(
+						rs.getInt("idHorario") + "|" + rs.getTime("horaIngreso") + "|" + rs.getTime("horaSalida"));
 			}
-			
+
 			rs.close();
 			stmt.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}// METODO MOSTRAR HORARIO
-	
+
 	public boolean InsertarHorario(Time horaIngreso, Time horaSalida) {// METODO INSERTAR HORARIO
-		
+
 		boolean banderaIngresoHorario = false;
-		
+
 		conexionBD.getConnection();
 		int idHorario = ObtenerMaximaId();
 		PreparedStatement psHorario = null;
@@ -65,7 +66,7 @@ public class ControladorHorario {
 		String queryHorario = "INSERT INTO horario (idHorario, horaIngreso, horaSalida) values (?, ?, ?)";
 
 		try {
-			
+
 			idHorario++;
 			psHorario = conexionBD.con.prepareStatement(queryHorario);
 
@@ -81,7 +82,7 @@ public class ControladorHorario {
 			banderaIngresoHorario = false;
 			System.out.println("Error!, la llamada no pudo ser agregada a la base de datos.");
 		}
-		
+
 		return banderaIngresoHorario;
 	}// METODO INSERTAR HORARIO
 

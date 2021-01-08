@@ -5,8 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import ups.edu.ec.test.ControladorFacturaTest;
-
 public class ControladorFactura {
 
 	public static int idFacturaCabecera;
