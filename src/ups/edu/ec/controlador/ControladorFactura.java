@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import ups.edu.ec.test.ControladorFacturaTest;
+
 public class ControladorFactura {
 
 	public static int idFacturaCabecera;
@@ -20,7 +22,7 @@ public class ControladorFactura {
 			Statement stmt = c.con.createStatement();
 			ResultSet rs = stmt.executeQuery(SQL);
 			idFacturaCabecera = 0;
-			
+
 			while (rs.next()) {
 				idFacturaCabecera = rs.getInt("idFacturaCabecera");
 			}
@@ -30,10 +32,10 @@ public class ControladorFactura {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
+		System.out.println("valor retornado: " + idFacturaCabecera);
 		return idFacturaCabecera;
 	}
-
 
 	public void MostrarFacturas() {
 		c.getConnection();
@@ -56,23 +58,36 @@ public class ControladorFactura {
 		}
 	}
 
-	public void InsertarFactura(String fecha, float subtotal, float iva, float total, String estado, String descripcion) {
+	public boolean InsertarFactura(String fecha, float subtotal, float iva, float total, String estado,
+			String descripcion) {
 
+		boolean banderaIngresoFact = false;
 		c.getConnection();
 		int idFactura = ObtenerMaximaId();
+		int idFacturaTest = 0;
 		PreparedStatement psCabecera = null, psDetalle = null;
 
 		String queryCabecera = "INSERT INTO facturacabecera (idFacturaCabecera, fecha, subTotal, iva, total, estado) values (?, ?, ?, ?, ?, ?)";
 		String queryDetalle = "INSERT INTO facturadetalle (idFacturaDetalle, descripcion, FacturaCabecera_idFacturaCabecera) values (?, ?, ?)";
 
 		try {
-			idFactura++;
-			System.out.println(idFactura + " insertada");
-
+			
 			psCabecera = c.con.prepareStatement(queryCabecera);
 			psDetalle = c.con.prepareStatement(queryDetalle);
 
-			psCabecera.setInt(1, idFactura);
+			if (estado.equals("T")) {
+				idFacturaTest--;
+				psCabecera.setInt(1, idFacturaTest);
+				psDetalle.setInt(1, idFacturaTest);
+				psDetalle.setInt(3, idFacturaTest);
+
+			} else {
+				idFactura++;
+				psCabecera.setInt(1, idFactura);
+				psDetalle.setInt(1, idFactura);
+				psDetalle.setInt(3, idFactura);
+			}
+
 			psCabecera.setString(2, fecha);
 			psCabecera.setFloat(3, subtotal);
 			psCabecera.setFloat(4, iva);
@@ -80,18 +95,20 @@ public class ControladorFactura {
 			psCabecera.setString(6, estado);
 			psCabecera.executeUpdate();
 
-			psDetalle.setInt(1, idFactura);
 			psDetalle.setString(2, descripcion);
-			psDetalle.setInt(3, idFactura);
 			psDetalle.executeUpdate();
 
 			psCabecera.close();
 			psDetalle.close();
 
+			banderaIngresoFact = true;
 			System.out.println("Llamada agregada con éxito a la base de datos.");
 		} catch (SQLException e) {
+			banderaIngresoFact = false;
 			System.out.println("Error!, la llamada no pudo ser agregada a la base de datos.");
 		}
+
+		return banderaIngresoFact;
 	}
 
 }
