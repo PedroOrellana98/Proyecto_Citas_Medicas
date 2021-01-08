@@ -28,7 +28,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.DropMode;
 import javax.swing.JComboBox;
 
-public class pmedico extends JFrame {
+public class Pmedico extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -47,7 +47,7 @@ public class pmedico extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					pmedico frame = new pmedico();
+					Pmedico frame = new Pmedico();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +59,7 @@ public class pmedico extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public pmedico() {
+	public Pmedico() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 684, 562);
 		contentPane = new JPanel();
@@ -74,7 +74,7 @@ public class pmedico extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(pmedico.class.getResource("/imagen/doctor.png")));
+		lblNewLabel.setIcon(new ImageIcon(Pmedico.class.getResource("/imagen/doctor.png")));
 		lblNewLabel.setBounds(161, 11, 84, 77);
 		panel.add(lblNewLabel);
 		
@@ -170,7 +170,7 @@ public class pmedico extends JFrame {
 		
 		JLabel lblNewLabel_1_5_1 = new JLabel("");
 		lblNewLabel_1_5_1.setBounds(216, 149, 32, 35);
-		lblNewLabel_1_5_1.setIcon(new ImageIcon(pmedico.class.getResource("/imagen/carnet.png")));
+		lblNewLabel_1_5_1.setIcon(new ImageIcon(Pmedico.class.getResource("/imagen/carnet.png")));
 		lblNewLabel_1_5_1.setForeground(new Color(210, 105, 30));
 		
 		textField_6 = new JTextField();
