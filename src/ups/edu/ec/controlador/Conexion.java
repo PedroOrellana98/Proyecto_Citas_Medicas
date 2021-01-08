@@ -22,7 +22,7 @@ public class Conexion {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String url= "jdbc:mysql://localhost:3306/citas_medicas?useTimezone=true&serverTimezone=UTC";
+			String url= "jdbc:mysql://localhost:3306/citas_medicas";
 			String usuario="root";
 			String clave="Patito.123";
 			
