@@ -19,6 +19,8 @@ import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class pmedico extends JFrame {
 
@@ -249,9 +251,17 @@ public class pmedico extends JFrame {
 		panel_1.add(separator_2_5);
 		panel_1.add(scrollPane);
 		
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setBounds(610, 94, 16, 24);
-		panel_1.add(lblNewLabel_3);
-		lblNewLabel_3.setIcon(new ImageIcon(pmedico.class.getResource("/imagen/buscador.png")));
+		JButton btnRegistro_1 = new JButton("");
+		btnRegistro_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				busqueda pb=new busqueda();
+				pb.setVisible(true);
+			}
+		});
+		btnRegistro_1.setIcon(new ImageIcon(pmedico.class.getResource("/imagen/buscador.png")));
+		btnRegistro_1.setBorder(null);
+		btnRegistro_1.setBackground((Color) null);
+		btnRegistro_1.setBounds(610, 100, 24, 24);
+		panel_1.add(btnRegistro_1);
 	}
 }
