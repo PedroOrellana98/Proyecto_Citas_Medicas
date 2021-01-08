@@ -2,6 +2,7 @@ package ups.edu.ec.controlador;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -56,5 +57,24 @@ public class Conexion {
 		  e.printStackTrace();
 		}
 		}
+	
+	public void BorrarTupla(int id) {
+		try
+		{
+	      String query = "delete from horario where idHorario = ?";
+	      PreparedStatement preparedStmt = con.prepareStatement(query);
+	      preparedStmt.setInt(1, id);
+
+	      // execute the preparedstatement
+	      preparedStmt.execute();
+	      System.out.println("Registro eliminado!!");
+	      con.close();
+	    }
+	    catch (Exception e)
+	    {
+	      System.err.println("Error! ");
+	      System.err.println(e.getMessage());
+	    }
+	}
 
 }

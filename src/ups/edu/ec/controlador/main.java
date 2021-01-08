@@ -8,6 +8,7 @@ public class main {
 		
 		c.getConnection();
 		c.ejecutarConsulta();
+		c.BorrarTupla(1);
 	}
 
 }
