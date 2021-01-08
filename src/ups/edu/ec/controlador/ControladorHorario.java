@@ -10,15 +10,15 @@ public class ControladorHorario {
 	
 	public static int idHorario;
 
-	Conexion c = new Conexion();
+	Conexion conexionBD = new Conexion();
 	
-	public int ObtenerMaximaId() {
+	public int ObtenerMaximaId() {// METODO OBTENER MAXIMA ID
 
-		c.getConnection();
+		conexionBD.getConnection();
 
 		try {
 			String SQL = "SELECT * FROM horario";
-			Statement stmt = c.con.createStatement();
+			Statement stmt = conexionBD.con.createStatement();
 			ResultSet rs = stmt.executeQuery(SQL);
 			idHorario = 0;
 			
@@ -33,14 +33,14 @@ public class ControladorHorario {
 		}
 		
 		return idHorario;
-	}
+	}// METODO OBTENER MAXIMA ID
 
-	public void MostrarHorario() {
-		c.getConnection();
+	public void MostrarHorario() {// METODO MOSTRAR HORARIO
+		conexionBD.getConnection();
 
 		try {
 			String SQL = "SELECT * FROM horario";
-			Statement stmt = c.con.createStatement();
+			Statement stmt = conexionBD.con.createStatement();
 			ResultSet rs = stmt.executeQuery(SQL);
 
 			while (rs.next()) {
@@ -52,13 +52,13 @@ public class ControladorHorario {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}// METODO MOSTRAR HORARIO
 	
-	public boolean InsertarHorario(Time horaIngreso, Time horaSalida) {
+	public boolean InsertarHorario(Time horaIngreso, Time horaSalida) {// METODO INSERTAR HORARIO
 		
 		boolean banderaIngresoHorario = false;
 		
-		c.getConnection();
+		conexionBD.getConnection();
 		int idHorario = ObtenerMaximaId();
 		PreparedStatement psHorario = null;
 
@@ -67,7 +67,7 @@ public class ControladorHorario {
 		try {
 			
 			idHorario++;
-			psHorario = c.con.prepareStatement(queryHorario);
+			psHorario = conexionBD.con.prepareStatement(queryHorario);
 
 			psHorario.setInt(1, idHorario);
 			psHorario.setTime(2, horaIngreso);
@@ -83,6 +83,6 @@ public class ControladorHorario {
 		}
 		
 		return banderaIngresoHorario;
-	}
+	}// METODO INSERTAR HORARIO
 
 }
