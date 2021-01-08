@@ -180,8 +180,8 @@ public class psecretaria extends JFrame {
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//pregistro pr=new pregistro();
-				//pr.setVisible(true);
+				pregistro pr=new pregistro();
+				pr.setVisible(true);
 			}
 		});
 		btnRegistro.setIcon(new ImageIcon(psecretaria.class.getResource("/imagen/icons8_User_96px_2.png")));
