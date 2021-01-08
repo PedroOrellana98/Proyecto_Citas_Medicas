@@ -54,8 +54,10 @@ public class ControladorHorario {
 		}
 	}
 	
-	public void InsertarHorario(Time horaIngreso, Time horaSalida) {
-
+	public boolean InsertarHorario(Time horaIngreso, Time horaSalida) {
+		
+		boolean banderaIngresoHorario = false;
+		
 		c.getConnection();
 		int idHorario = ObtenerMaximaId();
 		PreparedStatement psHorario = null;
@@ -63,6 +65,7 @@ public class ControladorHorario {
 		String queryHorario = "INSERT INTO horario (idHorario, horaIngreso, horaSalida) values (?, ?, ?)";
 
 		try {
+			
 			idHorario++;
 			psHorario = c.con.prepareStatement(queryHorario);
 
@@ -72,11 +75,14 @@ public class ControladorHorario {
 			psHorario.executeUpdate();
 
 			psHorario.close();
-
+			banderaIngresoHorario = true;
 			System.out.println("Llamada agregada con éxito a la base de datos.");
 		} catch (SQLException e) {
+			banderaIngresoHorario = false;
 			System.out.println("Error!, la llamada no pudo ser agregada a la base de datos.");
 		}
+		
+		return banderaIngresoHorario;
 	}
 
 }
