@@ -11,15 +11,15 @@ public class ControladorFactura {
 
 	public static int idFacturaCabecera;
 
-	Conexion c = new Conexion();
+	Conexion conexionBD = new Conexion();
 
-	public int ObtenerMaximaId() {
+	public int ObtenerMaximaId() {// METODO OBTENER MAXIMA ID
 
-		c.getConnection();
+		conexionBD.getConnection();
 
 		try {
 			String SQL = "SELECT * FROM facturacabecera";
-			Statement stmt = c.con.createStatement();
+			Statement stmt = conexionBD.con.createStatement();
 			ResultSet rs = stmt.executeQuery(SQL);
 			idFacturaCabecera = 0;
 
@@ -35,15 +35,15 @@ public class ControladorFactura {
 
 		System.out.println("valor retornado: " + idFacturaCabecera);
 		return idFacturaCabecera;
-	}
+	}// METODO OBTENER MAXIMA ID
 
-	public void MostrarFacturas() {
-		c.getConnection();
+	public void MostrarFacturas() {// METODO MOSTRAR FACTURAS
+		conexionBD.getConnection();
 
 		try {
 			String SQL = "SELECT * FROM facturacabecera fc, facturadetalle fd WHERE "
 					+ "fc.idFacturaCabecera = fd.FacturaCabecera_idFacturaCabecera";
-			Statement stmt = c.con.createStatement();
+			Statement stmt = conexionBD.con.createStatement();
 			ResultSet rs = stmt.executeQuery(SQL);
 
 			while (rs.next()) {
@@ -56,13 +56,13 @@ public class ControladorFactura {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}// METODO MOSTRAR FACTURAS
 
 	public boolean InsertarFactura(String fecha, float subtotal, float iva, float total, String estado,
-			String descripcion) {
+			String descripcion) {// METODO INSERTAR FACTURA
 
 		boolean banderaIngresoFact = false;
-		c.getConnection();
+		conexionBD.getConnection();
 		int idFactura = ObtenerMaximaId();
 		int idFacturaTest = 0;
 		PreparedStatement psCabecera = null, psDetalle = null;
@@ -71,9 +71,9 @@ public class ControladorFactura {
 		String queryDetalle = "INSERT INTO facturadetalle (idFacturaDetalle, descripcion, FacturaCabecera_idFacturaCabecera) values (?, ?, ?)";
 
 		try {
-			
-			psCabecera = c.con.prepareStatement(queryCabecera);
-			psDetalle = c.con.prepareStatement(queryDetalle);
+
+			psCabecera = conexionBD.con.prepareStatement(queryCabecera);
+			psDetalle = conexionBD.con.prepareStatement(queryDetalle);
 
 			if (estado.equals("T")) {
 				idFacturaTest--;
@@ -109,6 +109,5 @@ public class ControladorFactura {
 		}
 
 		return banderaIngresoFact;
-	}
-
+	}// MÉTODO INSERTAR FACTURA
 }
