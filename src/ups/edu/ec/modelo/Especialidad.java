@@ -1,19 +1,26 @@
 package ups.edu.ec.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Especialidad implements Serializable {
 
 	private int esp_id;
 	private String esp_nombre;
-	
+	public List list = new ArrayList();
+			
 	public Especialidad() {
+		
 		
 	}
 	public Especialidad(int esp_id,String esp_nombre) {
 		this.esp_id=esp_id;
 		this.esp_nombre=esp_nombre;
-		
+		Especialidad e=new Especialidad();
+		e.esp_id=esp_id;
+		e.esp_nombre=esp_nombre;
+		list.add(e);
 	}
 	public int getEsp_id() {
 		return esp_id;
@@ -51,8 +58,6 @@ public class Especialidad implements Serializable {
 	public String toString() {
 		return "Especialidad [esp_id=" + esp_id + ", esp_nombre=" + esp_nombre + "]";
 	}
-	
-	
 	
 	
 }

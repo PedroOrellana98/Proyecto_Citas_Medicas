@@ -2,11 +2,16 @@ package ups.edu.ec.controlador;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.table.DefaultTableModel;
 
 import com.mysql.cj.MysqlConnection;
 import com.mysql.cj.xdevapi.Result;
@@ -17,6 +22,9 @@ import com.mysql.jdbc.Driver;
 
 public class Conexion {
 	Connection con=null;
+	
+	static Statement sentencia;
+	static ResultSet resultado;
 	public Connection getConnection() {
 		
 		
@@ -56,5 +64,48 @@ public class Conexion {
 		  e.printStackTrace();
 		}
 		}
+	
+	public static ArrayList<String> llenarCombo() {
+		ArrayList<String> lista=new ArrayList<String>();
+		//String q="SELECT * FROM citasmedicas.especialidades;";
+		
+		try {
+			PreparedStatement ps = null;
+			ResultSet rs=null; 
+			Conexion Con = new Conexion();
+            Connection con = Con.getConnection();
+            
+            String sql="SELECT nombre FROM especialidades";
+            
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            
+            ResultSetMetaData rsmd= rs.getMetaData();
+            
+            
+            while (rs.next()) {
+				lista.add(rs.getString("nombre"));
+			}
+		} catch (SQLException ex) {
+			System.err.println(ex.toString());
+		}
+		
+		/*try {
+			resultado =sentencia.executeQuery(q);
+			System.out.print("Correcto");
+			System.out.print(resultado);
+		} catch (Exception e) {
+			System.out.print("Incorrecto no bale");
+		}
+		try {
+			while (resultado.next()) {
+				lista.add(resultado.getString("nombre"));			
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}*/
+		return lista;
+		
+	}
 
 }

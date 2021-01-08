@@ -19,8 +19,14 @@ import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import ups.edu.ec.controlador.Conexion;
+
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.DropMode;
+import javax.swing.JComboBox;
 
 public class pmedico extends JFrame {
 
@@ -30,9 +36,9 @@ public class pmedico extends JFrame {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
-	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTable table;
+	protected Object txtEsp;
 
 	/**
 	 * Launch the application.
@@ -162,17 +168,6 @@ public class pmedico extends JFrame {
 		lblNewLabel_1_5.setBounds(341, 101, 76, 14);
 		lblNewLabel_1_5.setForeground(new Color(210, 105, 30));
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(421, 101, 179, 20);
-		textField_5.setToolTipText("");
-		textField_5.setColumns(10);
-		textField_5.setBorder(null);
-		
-		JSeparator separator_2_5 = new JSeparator();
-		separator_2_5.setBounds(421, 121, 179, 14);
-		separator_2_5.setForeground(Color.LIGHT_GRAY);
-		separator_2_5.setBackground(Color.BLACK);
-		
 		JLabel lblNewLabel_1_5_1 = new JLabel("");
 		lblNewLabel_1_5_1.setBounds(216, 149, 32, 35);
 		lblNewLabel_1_5_1.setIcon(new ImageIcon(pmedico.class.getResource("/imagen/carnet.png")));
@@ -247,21 +242,15 @@ public class pmedico extends JFrame {
 		panel_1.add(textField_4);
 		panel_1.add(lblNewLabel_1_5);
 		panel_1.add(separator_2_2);
-		panel_1.add(textField_5);
-		panel_1.add(separator_2_5);
 		panel_1.add(scrollPane);
 		
-		JButton btnRegistro_1 = new JButton("");
-		btnRegistro_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				busqueda pb=new busqueda();
-				pb.setVisible(true);
-			}
-		});
-		btnRegistro_1.setIcon(new ImageIcon(pmedico.class.getResource("/imagen/buscador.png")));
-		btnRegistro_1.setBorder(null);
-		btnRegistro_1.setBackground((Color) null);
-		btnRegistro_1.setBounds(610, 100, 24, 24);
-		panel_1.add(btnRegistro_1);
+		JComboBox comboBox = new JComboBox();
+		ArrayList<String> lista=new ArrayList<String>();
+		lista = Conexion.llenarCombo();
+		for (int i = 0; i < lista.size(); i++) {
+			comboBox.addItem(lista.get(i));
+		}
+		comboBox.setBounds(414, 101, 172, 20);
+		panel_1.add(comboBox);
 	}
 }
