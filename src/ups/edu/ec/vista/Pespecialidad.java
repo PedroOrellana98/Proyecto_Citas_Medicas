@@ -31,7 +31,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
-public class pespecialidad extends JFrame {
+public class Pespecialidad extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtEspecialidades;
@@ -54,7 +54,7 @@ public class pespecialidad extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					pespecialidad frame = new pespecialidad();
+					Pespecialidad frame = new Pespecialidad();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,7 +66,7 @@ public class pespecialidad extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public pespecialidad() {
+	public Pespecialidad() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 568, 479);
 		contentPane = new JPanel();
@@ -81,7 +81,7 @@ public class pespecialidad extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(pespecialidad.class.getResource("/imagen/cientifico.png")));
+		lblNewLabel.setIcon(new ImageIcon(Pespecialidad.class.getResource("/imagen/cientifico.png")));
 		lblNewLabel.setBounds(144, 11, 85, 69);
 		panel.add(lblNewLabel);
 		
