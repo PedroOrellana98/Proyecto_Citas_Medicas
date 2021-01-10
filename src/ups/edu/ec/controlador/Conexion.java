@@ -76,6 +76,25 @@ public class Conexion {
 		} catch (SQLException ex) {
 			System.err.println(ex.toString());
 		}
+	
+	public void BorrarTupla(int id) {
+		try
+		{
+	      String query = "delete from horario where idHorario = ?";
+	      PreparedStatement preparedStmt = con.prepareStatement(query);
+	      preparedStmt.setInt(1, id);
+
+	      // execute the preparedstatement
+	      preparedStmt.execute();
+	      System.out.println();
+	      con.close();
+	    }
+	    catch (Exception e)
+	    {
+	      System.err.println("Error! ");
+	      System.err.println(e.getMessage());
+	    }
+	}
 
 		return lista;
 	}
