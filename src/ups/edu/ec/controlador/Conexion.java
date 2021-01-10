@@ -67,7 +67,7 @@ public class Conexion {
 
 	      // execute the preparedstatement
 	      preparedStmt.execute();
-	      System.out.println("Registro eliminado!!");
+	      System.out.println();
 	      con.close();
 	    }
 	    catch (Exception e)
