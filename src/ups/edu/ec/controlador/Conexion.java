@@ -76,7 +76,10 @@ public class Conexion {
 		} catch (SQLException ex) {
 			System.err.println(ex.toString());
 		}
-	
+		
+		
+		return lista;
+	}
 	public void BorrarTupla(int id) {
 		try
 		{
@@ -94,8 +97,8 @@ public class Conexion {
 	      System.err.println("Error! ");
 	      System.err.println(e.getMessage());
 	    }
-	}
-
-		return lista;
+	
+	
+	
 	}
 }

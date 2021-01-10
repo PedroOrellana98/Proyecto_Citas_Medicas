@@ -12,6 +12,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="1mtMitXHQoMDt6m5Vs52KgRskjF" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -49,6 +56,7 @@
       <updated>1610308572969</updated>
       <workItem from="1610308575585" duration="111000" />
       <workItem from="1610308721154" duration="98000" />
+      <workItem from="1610309409821" duration="532000" />
     </task>
     <servers />
   </component>
