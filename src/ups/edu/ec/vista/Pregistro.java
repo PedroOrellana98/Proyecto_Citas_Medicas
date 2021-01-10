@@ -38,7 +38,7 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class pregistro extends JFrame {
+public class Pregistro extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtnombre;
@@ -59,7 +59,7 @@ public class pregistro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					pregistro frame = new pregistro();
+					Pregistro frame = new Pregistro();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -71,7 +71,7 @@ public class pregistro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public pregistro() {
+	public Pregistro() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 678, 572);
 		contentPane = new JPanel();
@@ -88,17 +88,17 @@ public class pregistro extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(283, 5, 96, 96);
-		lblNewLabel.setIcon(new ImageIcon(pregistro.class.getResource("/imagen/icons8_User_96px_2.png")));
+		lblNewLabel.setIcon(new ImageIcon(Pregistro.class.getResource("/imagen/icons8_User_96px_2.png")));
 		panel.add(lblNewLabel);
 		
 		JButton btnvolver = new JButton("");
 		btnvolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				psecretaria ps=new psecretaria();
+				Psecretaria ps=new Psecretaria();
 				ps.setVisible(true);
 			}
 		});
-		btnvolver.setIcon(new ImageIcon(pregistro.class.getResource("/imagen/volver.png")));
+		btnvolver.setIcon(new ImageIcon(Pregistro.class.getResource("/imagen/volver.png")));
 		btnvolver.setBorder(null);
 		btnvolver.setBackground((Color) null);
 		btnvolver.setBounds(10, 5, 38, 40);
@@ -419,7 +419,7 @@ public class pregistro extends JFrame {
 		panel_1.add(btnNewButton_1_1);
 		
 		JLabel lblNewLabel_1_5_1 = new JLabel("");
-		lblNewLabel_1_5_1.setIcon(new ImageIcon(pregistro.class.getResource("/imagen/carnet.png")));
+		lblNewLabel_1_5_1.setIcon(new ImageIcon(Pregistro.class.getResource("/imagen/carnet.png")));
 		lblNewLabel_1_5_1.setForeground(new Color(210, 105, 30));
 		lblNewLabel_1_5_1.setBounds(203, 142, 32, 35);
 		panel_1.add(lblNewLabel_1_5_1);

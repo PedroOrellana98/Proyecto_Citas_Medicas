@@ -27,7 +27,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBoxMenuItem;
 
-public class psecretaria extends JFrame {
+public class Psecretaria extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -46,7 +46,7 @@ public class psecretaria extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					index frame = new index();
+					Index frame = new Index();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,7 +58,7 @@ public class psecretaria extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public  psecretaria() {
+	public  Psecretaria() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 952, 514);
 		contentPane = new JPanel();
@@ -74,7 +74,7 @@ public class psecretaria extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(index.class.getResource("/imagen/icons8_User_96px_2.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(Index.class.getResource("/imagen/icons8_User_96px_2.png")));
 		lblNewLabel_1.setBounds(63, 59, 96, 116);
 		panel.add(lblNewLabel_1);
 		
@@ -90,7 +90,7 @@ public class psecretaria extends JFrame {
 		panel.add(secUsuario);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(psecretaria.class.getResource("/imagen/pizarra.png")));
+		lblNewLabel.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/pizarra.png")));
 		lblNewLabel.setBounds(47, 270, 146, 142);
 		panel.add(lblNewLabel);
 		
@@ -115,7 +115,7 @@ public class psecretaria extends JFrame {
 		panel_1.add(separator_2);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon(index.class.getResource("/imagen/icons8_Search_32px_2.png")));
+		lblNewLabel_4.setIcon(new ImageIcon(Index.class.getResource("/imagen/icons8_Search_32px_2.png")));
 		lblNewLabel_4.setBounds(226, 19, 54, 32);
 		panel_1.add(lblNewLabel_4);
 		
@@ -126,17 +126,17 @@ public class psecretaria extends JFrame {
 		panel_2.setLayout(null);
 		
 		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setIcon(new ImageIcon(index.class.getResource("/imagen/icons8_Today_96px.png")));
+		lblNewLabel_5.setIcon(new ImageIcon(Index.class.getResource("/imagen/icons8_Today_96px.png")));
 		lblNewLabel_5.setBounds(417, 185, 101, 124);
 		panel_2.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_5_1_1 = new JLabel("");
-		lblNewLabel_5_1_1.setIcon(new ImageIcon(index.class.getResource("/imagen/agenda.png")));
+		lblNewLabel_5_1_1.setIcon(new ImageIcon(Index.class.getResource("/imagen/agenda.png")));
 		lblNewLabel_5_1_1.setBounds(75, 185, 101, 124);
 		panel_2.add(lblNewLabel_5_1_1);
 		
 		JLabel lblNewLabel_5_1_1_1 = new JLabel("");
-		lblNewLabel_5_1_1_1.setIcon(new ImageIcon(index.class.getResource("/imagen/yu (1).png")));
+		lblNewLabel_5_1_1_1.setIcon(new ImageIcon(Index.class.getResource("/imagen/yu (1).png")));
 		lblNewLabel_5_1_1_1.setBounds(258, 185, 101, 124);
 		panel_2.add(lblNewLabel_5_1_1_1);
 		
@@ -180,11 +180,11 @@ public class psecretaria extends JFrame {
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//pregistro pr=new pregistro();
-				//pr.setVisible(true);
+				Pregistro pr=new Pregistro();
+				pr.setVisible(true);
 			}
 		});
-		btnRegistro.setIcon(new ImageIcon(psecretaria.class.getResource("/imagen/icons8_User_96px_2.png")));
+		btnRegistro.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/icons8_User_96px_2.png")));
 		btnRegistro.setBackground(null);
 		btnRegistro.setBorder(null);
 		btnRegistro.setBounds(258, 39, 89, 86);
@@ -193,12 +193,12 @@ public class psecretaria extends JFrame {
 		JButton btnRegistro_1 = new JButton("");
 		btnRegistro_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				pespecialidad pe=new pespecialidad();
+				Pespecialidad pe=new Pespecialidad();
 				pe.setVisible(true);
 				
 			}
 		});
-		btnRegistro_1.setIcon(new ImageIcon(psecretaria.class.getResource("/imagen/cientifico.png")));
+		btnRegistro_1.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/cientifico.png")));
 		btnRegistro_1.setBorder(null);
 		btnRegistro_1.setBackground((Color) null);
 		btnRegistro_1.setBounds(418, 39, 89, 86);
@@ -216,11 +216,11 @@ public class psecretaria extends JFrame {
 		JButton btnRegistro_1_1 = new JButton("");
 		btnRegistro_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				pmedico pm=new pmedico();
+				Pmedico pm=new Pmedico();
 				pm.setVisible(true);
 			}
 		});
-		btnRegistro_1_1.setIcon(new ImageIcon(psecretaria.class.getResource("/imagen/doctor.png")));
+		btnRegistro_1_1.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/doctor.png")));
 		btnRegistro_1_1.setBorder(null);
 		btnRegistro_1_1.setBackground((Color) null);
 		btnRegistro_1_1.setBounds(75, 39, 89, 86);

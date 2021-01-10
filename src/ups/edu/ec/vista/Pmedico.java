@@ -20,7 +20,15 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class pmedico extends JFrame {
+import ups.edu.ec.controlador.Conexion;
+
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import javax.swing.DropMode;
+import javax.swing.JComboBox;
+
+public class Pmedico extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -28,9 +36,9 @@ public class pmedico extends JFrame {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
-	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTable table;
+	protected Object txtEsp;
 
 	/**
 	 * Launch the application.
@@ -39,7 +47,7 @@ public class pmedico extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					pmedico frame = new pmedico();
+					Pmedico frame = new Pmedico();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,7 +59,7 @@ public class pmedico extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public pmedico() {
+	public Pmedico() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 684, 562);
 		contentPane = new JPanel();
@@ -66,7 +74,7 @@ public class pmedico extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(pmedico.class.getResource("/imagen/doctor.png")));
+		lblNewLabel.setIcon(new ImageIcon(Pmedico.class.getResource("/imagen/doctor.png")));
 		lblNewLabel.setBounds(161, 11, 84, 77);
 		panel.add(lblNewLabel);
 		
@@ -160,20 +168,9 @@ public class pmedico extends JFrame {
 		lblNewLabel_1_5.setBounds(341, 101, 76, 14);
 		lblNewLabel_1_5.setForeground(new Color(210, 105, 30));
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(421, 101, 179, 20);
-		textField_5.setToolTipText("");
-		textField_5.setColumns(10);
-		textField_5.setBorder(null);
-		
-		JSeparator separator_2_5 = new JSeparator();
-		separator_2_5.setBounds(421, 121, 179, 14);
-		separator_2_5.setForeground(Color.LIGHT_GRAY);
-		separator_2_5.setBackground(Color.BLACK);
-		
 		JLabel lblNewLabel_1_5_1 = new JLabel("");
 		lblNewLabel_1_5_1.setBounds(216, 149, 32, 35);
-		lblNewLabel_1_5_1.setIcon(new ImageIcon(pmedico.class.getResource("/imagen/carnet.png")));
+		lblNewLabel_1_5_1.setIcon(new ImageIcon(Pmedico.class.getResource("/imagen/carnet.png")));
 		lblNewLabel_1_5_1.setForeground(new Color(210, 105, 30));
 		
 		textField_6 = new JTextField();
@@ -245,13 +242,15 @@ public class pmedico extends JFrame {
 		panel_1.add(textField_4);
 		panel_1.add(lblNewLabel_1_5);
 		panel_1.add(separator_2_2);
-		panel_1.add(textField_5);
-		panel_1.add(separator_2_5);
 		panel_1.add(scrollPane);
 		
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setBounds(610, 94, 16, 24);
-		panel_1.add(lblNewLabel_3);
-		lblNewLabel_3.setIcon(new ImageIcon(pmedico.class.getResource("/imagen/buscador.png")));
+		JComboBox comboBox = new JComboBox();
+		ArrayList<String> lista=new ArrayList<String>();
+		lista = Conexion.llenarCombo();
+		for (int i = 0; i < lista.size(); i++) {
+			comboBox.addItem(lista.get(i));
+		}
+		comboBox.setBounds(414, 101, 172, 20);
+		panel_1.add(comboBox);
 	}
 }
