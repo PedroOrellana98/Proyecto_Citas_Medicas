@@ -27,6 +27,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import ups.edu.ec.controlador.*;
+import ups.edu.ec.modelo.Medico;
 import ups.edu.ec.controlador.*;
 
 import java.sql.ResultSet;
@@ -34,6 +35,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -205,8 +207,34 @@ public class Mregistro extends JFrame {
 		btnregistrar.setBackground(new Color(244, 164, 96));
 		btnregistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JScrollPane scrollPane = new JScrollPane();
+				scrollPane.setBounds(0, 236, 662, 184);
+				panel_1.add(scrollPane);
+	
+				List<Medico> med = new ArrayList<Medico>();
 				ControladorMedico cm = new ControladorMedico();
 				cm.MostrarMedicos();
+				
+				tableusu = new JTable();
+				tableusu.setBorder(new LineBorder(new Color(218, 165, 32)));
+				tableusu.setBackground(new Color(255, 255, 255));
+				tableusu.setModel(new DefaultTableModel(
+						
+					new Object[][] {
+						{cm.m.getPer_nombre(),cm.m.getPer_apellido(), cm.m.getPer_cedula(), cm.m.getPer_email()},
+					},
+					new String[] {
+						"Nombres", "Apellidos", "Cedula", "Correo"
+					}
+				) {
+					Class[] columnTypes = new Class[] {
+						String.class, String.class, String.class, String.class, String.class, String.class
+					};
+					public Class getColumnClass(int columnIndex) {
+						return columnTypes[columnIndex];
+					}
+				});
+				scrollPane.setViewportView(tableusu);
 			}
 		});
 		btnregistrar.setBounds(342, 202, 89, 23);
@@ -217,36 +245,12 @@ public class Mregistro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ControladorMedico cm = new ControladorMedico();
 				cm.insertarMedico(1, txtnombre.getText(), txtapellidos.getText(), txtcedula.getText(), txtcorreo.getText(), txtpassword.getText(), 1);
-				JOptionPane.showMessageDialog(null, "Ingreso realizado con exito");
 			}
 		});
 		btnRestablecer.setBounds(242, 202, 89, 23);
 		panel_1.add(btnRestablecer);
 		btnRestablecer.setBackground(new Color(244, 164, 96));
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 236, 662, 184);
-		panel_1.add(scrollPane);
-		
-		tableusu = new JTable();
-		tableusu.setBorder(new LineBorder(new Color(218, 165, 32)));
-		tableusu.setBackground(new Color(255, 255, 255));
-		tableusu.setModel(new DefaultTableModel(
-			new Object[][] {
-				{txtnombre.getText(), txtapellidos.getText(), txtcedula.getText(), txtcorreo.getText(), txtpassword.getText()},
-			},
-			new String[] {
-				"Nombres", "Apellidos", "Cedula", "Correo", "Contraseña"
-			}
-		) {
-			Class[] columnTypes = new Class[] {
-				String.class, String.class, String.class, String.class, String.class, String.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		scrollPane.setViewportView(tableusu);
 		
 		JLabel lblNewLabel_1_5_1 = new JLabel("");
 		lblNewLabel_1_5_1.setIcon(new ImageIcon(Mregistro.class.getResource("/imagen/carnet.png")));

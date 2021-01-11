@@ -4,10 +4,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+import ups.edu.ec.modelo.Medico;
 
 public class ControladorMedico {
 	
 	Conexion conexionBD = new Conexion();
+	public static Medico m ;
 	
 	public void insertarMedico(int idMedico, String nombre, String apellido, String cedula, String correo, String contraseña, int idHorario) {
 
@@ -32,15 +40,15 @@ public class ControladorMedico {
 
             // Cerramos las conexiones, en orden inverso a su apertura
             System.out.println("Llamada agregada con éxito a la base de datos.");
+            JOptionPane.showMessageDialog(null, "Ingreso realizado con exito");
             preparedStmt.close();
         } catch (SQLException e) {
             System.out.println("Error!, la llamada no pudo ser agregada a la base de datos.");
         }
     }
 	
-	public void MostrarMedicos() {// METODO MOSTRAR FACTURAS
+	public void ListarMedicos() {// METODO MOSTRAR FACTURAS
 		conexionBD.getConnection();
-
 		try {
 			String SQL = "SELECT * FROM medico";
 			Statement stmt = conexionBD.con.createStatement();
@@ -56,6 +64,34 @@ public class ControladorMedico {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public List<Medico> MostrarMedicos() {// METODO MOSTRAR FACTURAS
+		conexionBD.getConnection();
+
+		List<Medico> med = new ArrayList<Medico>();
+		m = new Medico();
+		
+		try {
+			String SQL = "SELECT * FROM medico";
+			Statement stmt = conexionBD.con.createStatement();
+			ResultSet rs = stmt.executeQuery(SQL);
+
+			while (rs.next()) {
+				m.setPer_nombre(rs.getString("nombre"));
+				m.setPer_apellido(rs.getString("apellido"));
+				m.setPer_cedula(rs.getString("cedula"));
+				m.setPer_email(rs.getString("correo"));
+				med.add(m);
+			}
+			rs.close();
+			stmt.close();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "No se pudo listar");
+			e.printStackTrace();
+		}
+		
+		return med;
 	}
 
 }
