@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import ups.edu.ec.modelo.Horario;
+
 public class Conexion {
 	Connection con = null;
 
@@ -19,9 +21,9 @@ public class Conexion {
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/citasmedicas";
+			String url = "jdbc:mysql://localhost:8889/citas_medicas";
 			String usuario = "root";
-			String clave = "David1998.luis";
+			String clave = "root";
 
 			con = DriverManager.getConnection(url, usuario, clave);
 			System.out.println("Se conecto :)");
@@ -80,7 +82,7 @@ public class Conexion {
 		
 		return lista;
 	}
-	public void BorrarTupla(int id) {
+	public void BorrarTuplaHorario(int id) {
 		try
 		{
 	      String query = "delete from horario where idHorario = ?";
@@ -98,7 +100,51 @@ public class Conexion {
 	      System.err.println(e.getMessage());
 	    }
 	
+	}
 	
+	public void BorrarTuplaMedico(int idMedico) {
+		try
+		{
+	      String query = "delete from Medico where idMedico = ?";
+	      PreparedStatement preparedStmt = con.prepareStatement(query);
+	      preparedStmt.setInt(1, idMedico);
+
+	      // execute the preparedstatement
+	      preparedStmt.execute();
+	      System.out.println();
+	      con.close();
+	    }
+	    catch (Exception e)
+	    {
+	      System.err.println("Error! ");
+	      System.err.println(e.getMessage());
+	    }
 	
 	}
+	public void insertarMedico(int idMedico, String nombre, String apellido, String cedula, String correo, String contraseña, int idHorario) {
+
+	        // Crear sentencia SQL para insertar en la base de datos
+	        String query = "INSERT INTO Medico (idMedico, nombre, apellido, cedula, correo, contraseña, Horario_idHorario) values (?, ?, ?, ?, ?, ?, ?)";
+
+	        try {
+	          PreparedStatement preparedStmt = con.prepareStatement(query);
+	            
+	          preparedStmt.setInt       (1, idMedico);
+	          preparedStmt.setString    (2,nombre);
+	          preparedStmt.setString    (3, apellido);
+	          preparedStmt.setString    (4, cedula);
+	          preparedStmt.setString    (5, correo);
+	          preparedStmt.setString    (6, contraseña);
+	          preparedStmt.setInt       (7, idHorario);
+
+	            // Indicamos que comience la actualización de la tabla en nuestra base de datos
+	          preparedStmt.executeUpdate();
+
+	            // Cerramos las conexiones, en orden inverso a su apertura
+	            System.out.println("Llamada agregada con éxito a la base de datos.");
+	            con.close();
+	        } catch (SQLException e) {
+	            System.out.println("Error!, la llamada no pudo ser agregada a la base de datos.");
+	        }
+	    }
 }

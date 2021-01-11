@@ -25,6 +25,9 @@ public class Main {
 		
 		Index interfaces = new Index();
 		interfaces.setVisible(true);
+		
+	
+		
 
 	}
 

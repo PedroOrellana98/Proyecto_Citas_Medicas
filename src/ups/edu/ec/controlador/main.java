@@ -7,8 +7,8 @@ public class main {
 		Conexion c = new Conexion();
 		
 		c.getConnection();
-		c.ejecutarConsulta();
-		c.BorrarTupla(1);
+		c.insertarMedico(1, "Ricardo", "Ordoñez", "0102363058", "ricaro@gmail.com", "1234", 2);
+		
 	}
 
 }
