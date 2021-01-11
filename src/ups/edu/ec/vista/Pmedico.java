@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -21,8 +22,12 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import ups.edu.ec.controlador.Conexion;
+import ups.edu.ec.modelo.Especialidad;
 
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.DropMode;
@@ -31,13 +36,14 @@ import javax.swing.JComboBox;
 public class Pmedico extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField mcodigo;
+	private JTextField mtelefono;
+	private JTextField mmedico;
+	private JTextField memail;
+	private JTextField mdireccion;
 	private JTextField textField_6;
-	private JTable table;
+	private JComboBox mComboBox;
+	private JTable tabmedico;
 	protected Object txtEsp;
 
 	/**
@@ -93,11 +99,11 @@ public class Pmedico extends JFrame {
 		lblNewLabel_1_1.setBounds(23, 18, 56, 14);
 		lblNewLabel_1_1.setForeground(new Color(210, 105, 30));
 		
-		textField = new JTextField();
-		textField.setBounds(88, 11, 179, 20);
-		textField.setToolTipText("");
-		textField.setColumns(10);
-		textField.setBorder(null);
+		mcodigo = new JTextField();
+		mcodigo.setBounds(88, 11, 179, 20);
+		mcodigo.setToolTipText("");
+		mcodigo.setColumns(10);
+		mcodigo.setBorder(null);
 		
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setBounds(88, 31, 179, 14);
@@ -105,14 +111,14 @@ public class Pmedico extends JFrame {
 		separator_2.setBackground(Color.BLACK);
 		
 		JLabel lblNewLabel_1_3 = new JLabel("Telefono:");
-		lblNewLabel_1_3.setBounds(360, 18, 46, 14);
+		lblNewLabel_1_3.setBounds(341, 18, 63, 14);
 		lblNewLabel_1_3.setForeground(new Color(210, 105, 30));
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(414, 11, 179, 20);
-		textField_1.setToolTipText("");
-		textField_1.setColumns(10);
-		textField_1.setBorder(null);
+		mtelefono = new JTextField();
+		mtelefono.setBounds(414, 11, 179, 20);
+		mtelefono.setToolTipText("");
+		mtelefono.setColumns(10);
+		mtelefono.setBorder(null);
 		
 		JSeparator separator_2_3 = new JSeparator();
 		separator_2_3.setBounds(414, 31, 179, 14);
@@ -123,11 +129,11 @@ public class Pmedico extends JFrame {
 		lblNewLabel_1_1_1.setBounds(23, 63, 56, 14);
 		lblNewLabel_1_1_1.setForeground(new Color(210, 105, 30));
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(88, 56, 179, 20);
-		textField_2.setToolTipText("");
-		textField_2.setColumns(10);
-		textField_2.setBorder(null);
+		mmedico = new JTextField();
+		mmedico.setBounds(88, 56, 179, 20);
+		mmedico.setToolTipText("");
+		mmedico.setColumns(10);
+		mmedico.setBorder(null);
 		
 		JSeparator separator_2_1 = new JSeparator();
 		separator_2_1.setBounds(88, 76, 179, 14);
@@ -138,11 +144,11 @@ public class Pmedico extends JFrame {
 		lblNewLabel_1_4.setBounds(360, 63, 64, 14);
 		lblNewLabel_1_4.setForeground(new Color(210, 105, 30));
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(424, 56, 179, 20);
-		textField_3.setToolTipText("");
-		textField_3.setColumns(10);
-		textField_3.setBorder(null);
+		memail = new JTextField();
+		memail.setBounds(424, 56, 179, 20);
+		memail.setToolTipText("");
+		memail.setColumns(10);
+		memail.setBorder(null);
 		
 		JSeparator separator_2_4 = new JSeparator();
 		separator_2_4.setBounds(424, 76, 179, 14);
@@ -153,11 +159,11 @@ public class Pmedico extends JFrame {
 		lblNewLabel_1_2.setBounds(23, 104, 56, 14);
 		lblNewLabel_1_2.setForeground(new Color(210, 105, 30));
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(88, 101, 179, 20);
-		textField_4.setToolTipText("");
-		textField_4.setColumns(10);
-		textField_4.setBorder(null);
+		mdireccion = new JTextField();
+		mdireccion.setBounds(88, 101, 179, 20);
+		mdireccion.setToolTipText("");
+		mdireccion.setColumns(10);
+		mdireccion.setBorder(null);
 		
 		JSeparator separator_2_2 = new JSeparator();
 		separator_2_2.setBounds(88, 121, 179, 14);
@@ -189,6 +195,36 @@ public class Pmedico extends JFrame {
 		btnRestablecer.setBackground(new Color(244, 164, 96));
 		
 		JButton btnregistrar = new JButton("Registrar");
+		btnregistrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				DefaultTableModel modelo=new DefaultTableModel();
+				tabmedico.setModel(modelo);
+				PreparedStatement ps = null;
+		        try {
+		        	
+		        	
+		            Conexion Con = new Conexion();
+		            Connection con = Con.getConnection();
+		            System.out.println("hola");
+		            ps = con.prepareStatement("INSERT INTO medico (codigo,nombre,direccion,telefono,email,especialidad) VALUES (?,?,?,?,?,?)");
+		            ps.setString(1, mcodigo.getText());
+		            ps.setString(2, mmedico.getText());
+		            ps.setString(3, mdireccion.getText());
+		            ps.setString(4, mtelefono.getText());
+		            ps.setString(5, memail.getText());
+		            ps.setString(6, (String) mComboBox.getSelectedItem());
+
+		            ps.execute();
+
+		            JOptionPane.showMessageDialog(null, "Medico Agregado");
+		          
+		        } catch (SQLException ex) {
+		            JOptionPane.showMessageDialog(null, "Medico nO se Agrego");
+		            System.out.println(ex);
+		        }
+			}
+		});
 		btnregistrar.setBounds(143, 198, 89, 23);
 		btnregistrar.setBackground(new Color(244, 164, 96));
 		
@@ -207,8 +243,8 @@ public class Pmedico extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 232, 668, 193);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
+		tabmedico = new JTable();
+		tabmedico.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null, "", null},
 			},
@@ -216,13 +252,13 @@ public class Pmedico extends JFrame {
 				"Codigo", "Medico", "Direccion", "Telefono", "Email", "Especialidad"
 			}
 		));
-		scrollPane.setViewportView(table);
+		scrollPane.setViewportView(tabmedico);
 		panel_1.setLayout(null);
 		panel_1.add(lblNewLabel_1_1);
-		panel_1.add(textField);
+		panel_1.add(mcodigo);
 		panel_1.add(separator_2);
 		panel_1.add(lblNewLabel_1_3);
-		panel_1.add(textField_1);
+		panel_1.add(mtelefono);
 		panel_1.add(separator_2_3);
 		panel_1.add(lblNewLabel_1_5_1);
 		panel_1.add(textField_6);
@@ -233,24 +269,24 @@ public class Pmedico extends JFrame {
 		panel_1.add(btnNewButton_1);
 		panel_1.add(btnNewButton_2);
 		panel_1.add(lblNewLabel_1_1_1);
-		panel_1.add(textField_2);
+		panel_1.add(mmedico);
 		panel_1.add(separator_2_1);
 		panel_1.add(lblNewLabel_1_4);
-		panel_1.add(textField_3);
+		panel_1.add(memail);
 		panel_1.add(separator_2_4);
 		panel_1.add(lblNewLabel_1_2);
-		panel_1.add(textField_4);
+		panel_1.add(mdireccion);
 		panel_1.add(lblNewLabel_1_5);
 		panel_1.add(separator_2_2);
 		panel_1.add(scrollPane);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox mcomboBox = new JComboBox();
 		ArrayList<String> lista=new ArrayList<String>();
 		lista = Conexion.llenarCombo();
 		for (int i = 0; i < lista.size(); i++) {
-			comboBox.addItem(lista.get(i));
+			mcomboBox.addItem(lista.get(i));
 		}
-		comboBox.setBounds(414, 101, 172, 20);
-		panel_1.add(comboBox);
+		mcomboBox.setBounds(414, 101, 172, 20);
+		panel_1.add(mcomboBox);
 	}
 }
