@@ -19,9 +19,9 @@ public class Conexion {
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/citasmedicas";
+			String url = "jdbc:mysql://localhost:3306/citasmedicas?useTimezone=true&serverTimezone=UTC";
 			String usuario = "root";
-			String clave = "David1998.luis";
+			String clave = "admin";
 
 			con = DriverManager.getConnection(url, usuario, clave);
 			System.out.println("Se conecto :)");
