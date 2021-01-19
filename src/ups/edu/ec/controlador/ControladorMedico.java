@@ -28,7 +28,7 @@ public class ControladorMedico {
           PreparedStatement preparedStmt = conexionBD.con.prepareStatement(query);
             
           preparedStmt.setInt       (1, idMedico);
-          preparedStmt.setString    (2,nombre);
+          preparedStmt.setString    (2, nombre);
           preparedStmt.setString    (3, apellido);
           preparedStmt.setString    (4, cedula);
           preparedStmt.setString    (5, correo);

@@ -1,6 +1,5 @@
 package ups.edu.ec.vista;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -15,30 +14,16 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
+
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.border.LineBorder;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 
 import ups.edu.ec.controlador.*;
 import ups.edu.ec.modelo.Medico;
-import ups.edu.ec.controlador.*;
 
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 public class Mregistro extends JFrame {
 
@@ -48,6 +33,7 @@ public class Mregistro extends JFrame {
 	private JTextField txtcorreo;
 	private JTextField txtcedula;
 	private JTextField txtpassword;
+	private JTextField txtespecialidad;
 	private JTable tableusu;
 	private JTextField txtbuscar;
 	
@@ -132,10 +118,15 @@ public class Mregistro extends JFrame {
 		lblNewLabel_1_3.setBounds(347, 11, 46, 14);
 		panel_1.add(lblNewLabel_1_3);
 		
-		JLabel lblNewLabel_1_4 = new JLabel("Contraseña:");
+		JLabel lblNewLabel_1_4 = new JLabel("Clave:");
 		lblNewLabel_1_4.setForeground(new Color(210, 105, 30));
 		lblNewLabel_1_4.setBounds(347, 56, 64, 14);
 		panel_1.add(lblNewLabel_1_4);
+		
+		JLabel lblNewLabel_1_5 = new JLabel("Especialidad:");
+		lblNewLabel_1_5.setForeground(new Color(210, 105, 30));
+		lblNewLabel_1_5.setBounds(315, 97, 100, 14);
+		panel_1.add(lblNewLabel_1_5);
 		
 		
 		txtnombre = new JTextField();
@@ -190,18 +181,32 @@ public class Mregistro extends JFrame {
 		separator_2_3.setBounds(401, 24, 179, 14);
 		panel_1.add(separator_2_3);
 		
-		JSeparator separator_2_4 = new JSeparator();
-		separator_2_4.setForeground(new Color(192, 192, 192));
-		separator_2_4.setBackground(Color.BLACK);
-		separator_2_4.setBounds(411, 69, 179, 14);
-		panel_1.add(separator_2_4);
-		
 		txtpassword = new JTextField();
 		txtpassword.setToolTipText("");
 		txtpassword.setColumns(10);
 		txtpassword.setBorder(null);
 		txtpassword.setBounds(411, 49, 179, 20);
 		panel_1.add(txtpassword);
+		
+		JSeparator separator_2_4 = new JSeparator();
+		separator_2_4.setForeground(new Color(192, 192, 192));
+		separator_2_4.setBackground(Color.BLACK);
+		separator_2_4.setBounds(401, 69, 179, 14);
+		panel_1.add(separator_2_4);
+		
+		txtespecialidad = new JTextField();
+		txtespecialidad.setToolTipText("");
+		txtespecialidad.setColumns(10);
+		txtespecialidad.setBorder(null);
+		txtespecialidad.setBounds(401, 94, 179, 20);
+		panel_1.add(txtespecialidad);
+		
+		JSeparator separator_2_5 = new JSeparator();
+		separator_2_5.setForeground(new Color(192, 192, 192));
+		separator_2_5.setBackground(Color.BLACK);
+		separator_2_5.setBounds(401, 114, 179, 14);
+		panel_1.add(separator_2_5);
+		
 		
 		JButton btnregistrar = new JButton("Listar");
 		btnregistrar.setBackground(new Color(244, 164, 96));
