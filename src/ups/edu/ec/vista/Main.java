@@ -39,11 +39,15 @@ public class Main {
 
 		ch.InsertarHorario(Time.valueOf(horaIngreso), Time.valueOf(horaSalida));
 		ch.MostrarHorario();
-		Index index = new Index();
+                
+                Mregistro m = new Mregistro();
+		m.setVisible(true);
+                
+                Index index = new Index();
 		index.setVisible(true);*/
 		
-		Mregistro m = new Mregistro();
-		m.setVisible(true);
+		Horario horario = new Horario();
+                horario.setVisible(true);
 
 	}
 
