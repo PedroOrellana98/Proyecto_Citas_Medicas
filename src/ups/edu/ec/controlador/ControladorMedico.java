@@ -17,12 +17,12 @@ public class ControladorMedico {
 	Conexion conexionBD = new Conexion();
 	public static Medico m ;
 	
-	public void insertarMedico(int idMedico, String nombre, String apellido, String cedula, String correo, String contraseña, int idHorario) {
+	public void insertarMedico(int idMedico, String nombre, String apellido, String cedula, String correo, String contrasena, int idHorario) {
 
 		
 		conexionBD.getConnection();
         // Crear sentencia SQL para insertar en la base de datos
-        String query = "INSERT INTO Medico (idMedico, nombre, apellido, cedula, correo, contraseña, Horario_idHorario) values (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO Medico (idMedico, nombre, apellido, cedula, correo, contraseÃ±a, Horario_idHorario) values (?, ?, ?, ?, ?, ?, ?)";
 
         try {
           PreparedStatement preparedStmt = conexionBD.con.prepareStatement(query);
@@ -32,14 +32,14 @@ public class ControladorMedico {
           preparedStmt.setString    (3, apellido);
           preparedStmt.setString    (4, cedula);
           preparedStmt.setString    (5, correo);
-          preparedStmt.setString    (6, contraseña);
+          preparedStmt.setString    (6, contrasena);
           preparedStmt.setInt       (7, idHorario);
 
-            // Indicamos que comience la actualización de la tabla en nuestra base de datos
+            // Indicamos que comience la actualizaciï¿½n de la tabla en nuestra base de datos
           preparedStmt.executeUpdate();
 
             // Cerramos las conexiones, en orden inverso a su apertura
-            System.out.println("Llamada agregada con éxito a la base de datos.");
+            System.out.println("Llamada agregada con ï¿½xito a la base de datos.");
             JOptionPane.showMessageDialog(null, "Ingreso realizado con exito");
             preparedStmt.close();
         } catch (SQLException e) {
@@ -57,7 +57,7 @@ public class ControladorMedico {
 			while (rs.next()) {
 				System.out.println(rs.getInt("idMedico") + "|" + rs.getString("nombre") + "|"
 						+ rs.getString("apellido") + "|" + rs.getString("cedula") + "|" + rs.getString("correo") + "|"
-						+ rs.getString("contraseña") + "|" + rs.getString("Horario_idHorario"));
+						+ rs.getString("contraseÃ±a") + "|" + rs.getString("Horario_idHorario"));
 			}
 			rs.close();
 			stmt.close();

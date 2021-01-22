@@ -32,7 +32,7 @@ public class Main {
 		cm.insertarMedico(1, "Juan", "Ortiz", "0101234567", "jaunortiz@gmail.com", "juan123", 1);
 		cm.MostrarMedicos();*/
 		
-		ControladorHorario ch = new ControladorHorario();
+	ControladorHorario ch = new ControladorHorario();
 		
 		LocalTime horaIngreso = LocalTime.parse("12:00");
 		LocalTime horaSalida = LocalTime.parse("15:00");

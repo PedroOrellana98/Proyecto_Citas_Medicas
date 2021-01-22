@@ -132,7 +132,7 @@ public class Mregistro extends JFrame {
 		lblNewLabel_1_3.setBounds(347, 11, 46, 14);
 		panel_1.add(lblNewLabel_1_3);
 		
-		JLabel lblNewLabel_1_4 = new JLabel("Contraseña:");
+		JLabel lblNewLabel_1_4 = new JLabel("Contraseï¿½a:");
 		lblNewLabel_1_4.setForeground(new Color(210, 105, 30));
 		lblNewLabel_1_4.setBounds(347, 56, 64, 14);
 		panel_1.add(lblNewLabel_1_4);
@@ -244,7 +244,7 @@ public class Mregistro extends JFrame {
 		btnRestablecer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControladorMedico cm = new ControladorMedico();
-				cm.insertarMedico(1, txtnombre.getText(), txtapellidos.getText(), txtcedula.getText(), txtcorreo.getText(), txtpassword.getText(), 1);
+				cm.insertarMedico(2, txtnombre.getText(), txtapellidos.getText(), txtcedula.getText(), txtcorreo.getText(), txtpassword.getText(), 3);
 			}
 		});
 		btnRestablecer.setBounds(242, 202, 89, 23);
