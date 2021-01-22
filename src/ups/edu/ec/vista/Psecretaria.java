@@ -38,6 +38,7 @@ public class Psecretaria extends JFrame {
 	private JTextField txtRegistroEspecialidad;
 	private JTextField txtRegistroMedico;
 	JTextField secUsuario;
+	private JTextField txtPagos;
 
 	/**
 	 * Launch the application.
@@ -173,7 +174,7 @@ public class Psecretaria extends JFrame {
 		txtRegistroDeCitas.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
 		txtRegistroDeCitas.setColumns(10);
 		txtRegistroDeCitas.setBorder(null);
-		txtRegistroDeCitas.setBounds(250, 320, 126, 20);
+		txtRegistroDeCitas.setBounds(227, 320, 149, 20);
 		panel_2.add(txtRegistroDeCitas);
 		
 		JButton btnRegistro = new JButton("");
@@ -234,5 +235,21 @@ public class Psecretaria extends JFrame {
 		txtRegistroMedico.setBorder(null);
 		txtRegistroMedico.setBounds(75, 136, 126, 20);
 		panel_2.add(txtRegistroMedico);
+		
+		JButton btnPago = new JButton("");
+		btnPago.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/tarjeta-de-debito.png")));
+		btnPago.setBorder(null);
+		btnPago.setBackground((Color) null);
+		btnPago.setBounds(547, 39, 89, 86);
+		panel_2.add(btnPago);
+		
+		txtPagos = new JTextField();
+		txtPagos.setText("Pagos");
+		txtPagos.setForeground(new Color(244, 164, 96));
+		txtPagos.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
+		txtPagos.setColumns(10);
+		txtPagos.setBorder(null);
+		txtPagos.setBounds(571, 136, 54, 20);
+		panel_2.add(txtPagos);
 	}
 }
