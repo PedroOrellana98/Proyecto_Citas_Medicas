@@ -5,8 +5,10 @@ public class main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-	       //ControladorCitasTest ct = new ControladorCitasTest();
-              // ct.testInsertarCita();
+              //  ControladorHorario ct = new ControladorHorario();
+                //ct.MostrarHorario();
+	       //ControladorCitas ct = new ControladorCitas();
+                 //ct.BuscarPaciente("0102363058");
                RegistroCitas citas = new RegistroCitas();
                citas.setVisible(true);
 		

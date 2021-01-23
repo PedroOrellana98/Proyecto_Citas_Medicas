@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.util.Date;
+import javax.swing.JTextField;
 
 /**
  *
@@ -109,6 +110,31 @@ public class ControladorCitas {
 
 		return banderaIngresoCita;
 	}// METODO INSERTAR CITA
+        public JTextField BuscarPaciente(String cedula , JTextField paciente , JTextField pacienteid) {// METODO BUSCAR CEDULA PACIENTE 
 
-    
+		conexionBD.getConnection();
+                //PreparedStatement psPaciente = null;"
+              try {
+		String queryBuscarP = "SELECT idPaciente,CONCAT(nombre, apellido)as nombres FROM Paciente where cedula = "+cedula+"";
+                Statement stmt = conexionBD.con.createStatement();
+	        ResultSet rs = stmt.executeQuery(queryBuscarP);
+               // psPaciente = conexionBD.con.prepareStatement(queryBuscarP);
+               // psPaciente.setString(1, cedula);
+                //psPaciente.execute();
+                while (rs.next()) {
+				System.out.println(rs.getInt("idPaciente") + "|" + rs.getString("nombres"));
+                                 paciente.setText(rs.getString("nombres"));
+                                 pacienteid.setText(String.valueOf(rs.getInt("idPaciente")));
+                                 
+			}
+			rs.close();
+			stmt.close();
+		} catch (Exception e) {
+			System.out.println("Error!");
+		}
+                    return paciente;
+		
+	}// METODO BUSCAR CEDULA PACIENTE 
+
+	     
 }
