@@ -32,10 +32,11 @@ ControladorSecretaria cs = new ControladorSecretaria();
      * Creates new form RegistroCitas
      */
     public RegistroCitas() {
+        
         initComponents();
         txtidpaciente.setVisible(false);
-        cm.MostrarMedicosPorNombre(jmedico);
-        cs.MostrarSecretariaPorNombre(jsecre);
+       // cm.MostrarMedicosPorNombre(jmedico);
+       // cs.MostrarSecretariaPorNombre(jsecre);
        // ct.MostrarfechasPorId(jfechas, Integer.parseInt(txtpaciente.getText()));
         
     }
@@ -336,8 +337,13 @@ ControladorSecretaria cs = new ControladorSecretaria();
     private void cmdBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBuscarActionPerformed
         // TODO add your handling code here:
         ControladorCitas ct = new ControladorCitas();
+        cm.MostrarMedicosPorNombre(jmedico);
+        cs.MostrarSecretariaPorNombre(jsecre);
         ct.BuscarPaciente(txtbuscar.getText(),txtpaciente,txtidpaciente);    
         ct.MostrarfechasPorId(jfechas, Integer.parseInt(txtidpaciente.getText()));
+        
+       
+       
     }//GEN-LAST:event_cmdBuscarActionPerformed
 
     private void txtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarActionPerformed
@@ -349,9 +355,12 @@ ControladorSecretaria cs = new ControladorSecretaria();
         ControladorCitas ct = new ControladorCitas();
        // System.out.println((ct.BuscarPaciente(txtpaciente.getText().trim())));
    //new java.sql.Date(jfecha.getDate().getTime())
-        
+         
         ct.InsertarCita(new java.sql.Date(jfecha.getDate().getTime()),Time.valueOf(LocalTime.parse(txthora.getText())),cs.MostrarSecretariaPorNombre(jsecre).getSelectedIndex(),Integer.parseInt(txtidpaciente.getText()),cm.MostrarMedicosPorNombre(jmedico).getSelectedIndex());
-      //  System.out.println(cm.MostrarMedicosPorNombre(jmedico).getItemCount());
+         jsecre.removeAllItems();
+         jmedico.removeAllItems();
+          jfechas.removeAllItems();
+        //  System.out.println(cm.MostrarMedicosPorNombre(jmedico).getItemCount());
        // System.out.println(cs.MostrarSecretariaPorNombre(jsecre).getItemCount());
     }//GEN-LAST:event_cmdRegistrarCitaActionPerformed
 
