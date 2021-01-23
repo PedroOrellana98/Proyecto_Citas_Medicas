@@ -108,6 +108,11 @@ public class RegistroCitas extends javax.swing.JFrame {
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton4.setText("Registrar Cita");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistrarCita(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -289,6 +294,11 @@ public class RegistroCitas extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButtonRegistrarCita(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarCita
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButtonRegistrarCita
 
     /**
      * @param args the command line arguments
