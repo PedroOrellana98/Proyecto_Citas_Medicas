@@ -10,7 +10,7 @@ import ups.edu.ec.controlador.ControladorMedico;
 
 public class Main {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 		
 		/*ControladorFactura cf = new ControladorFactura();
 		
@@ -46,9 +46,11 @@ public class Main {
                 Index index = new Index();
 		index.setVisible(true);*/
 		
-		Horario horario = new Horario();
-                horario.setVisible(true);
-
-	}
+	//Horario horario = new Horario();
+        //horario.setVisible(true);
+        
+        Mregistro m = new Mregistro();
+        m.setVisible(true);
+    }
 
 }

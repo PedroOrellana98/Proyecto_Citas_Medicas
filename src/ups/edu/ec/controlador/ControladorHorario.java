@@ -5,10 +5,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
+import ups.edu.ec.modelo.Horario;
 
 public class ControladorHorario {
 
 	public static int idHorario;
+        public static Horario h;
+        public static List<Horario> hor;
 
 	Conexion conexionBD = new Conexion();
 
@@ -35,25 +40,6 @@ public class ControladorHorario {
 		return idHorario;
 	}// METODO OBTENER MAXIMA ID
 
-	public void MostrarHorario() {// METODO MOSTRAR HORARIO
-		conexionBD.getConnection();
-
-		try {
-			String SQL = "SELECT * FROM horario";
-			Statement stmt = conexionBD.con.createStatement();
-			ResultSet rs = stmt.executeQuery(SQL);
-
-			while (rs.next()) {
-				System.out.println(
-						rs.getInt("idHorario") + "|" + rs.getTime("horaIngreso") + "|" + rs.getTime("horaSalida"));
-			}
-
-			rs.close();
-			stmt.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}// METODO MOSTRAR HORARIO
 
 	public boolean InsertarHorario(Time horaIngreso, Time horaSalida) {// METODO INSERTAR HORARIO
 
@@ -85,5 +71,30 @@ public class ControladorHorario {
 
 		return banderaIngresoHorario;
 	}// METODO INSERTAR HORARIO
+        
+        public List<Horario> ListarHorarios() {// METODO MOSTRAR FACTURAS
+        conexionBD.getConnection();
+
+        hor = new ArrayList<Horario>();
+        try {
+            String SQL = "SELECT * FROM medico m, especialidad e, horario h where "
+                    + "h.idHorario = Horario_idHorario AND m.idMedico = e.Medico_idMedico";
+            Statement stmt = conexionBD.con.createStatement();
+            ResultSet rs = stmt.executeQuery(SQL);
+            while (rs.next()) {
+                h = new Horario();
+                h.setHoraIngreso(rs.getTime("horaIngreso"));
+                h.setHoraSalida(rs.getTime("horaSalida"));
+                hor.add(h);
+            }
+
+            rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return hor;
+    }
 
 }

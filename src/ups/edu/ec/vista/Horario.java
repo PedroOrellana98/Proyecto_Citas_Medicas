@@ -102,7 +102,6 @@ public class Horario extends javax.swing.JFrame {
         LocalTime horaSalida = LocalTime.parse(txtSalida.getText());
 
         ch.InsertarHorario(Time.valueOf(horaIngreso), Time.valueOf(horaSalida));
-        ch.MostrarHorario();
         
         if (btnInsertar.isSelected()) {
             this.dispose();
