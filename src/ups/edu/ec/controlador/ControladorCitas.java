@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -89,7 +89,7 @@ public class ControladorCitas {
 			psCita = conexionBD.con.prepareStatement(queryHorario);
 
 			psCita.setInt(1, idCita);
-			psCita.setDate(2, fecha);
+			psCita.setDate(2, (java.sql.Date) fecha);
 			psCita.setTime(3, hora);
                         psCita.setInt(4, secretaria);
                         psCita.setInt(5, paciente);

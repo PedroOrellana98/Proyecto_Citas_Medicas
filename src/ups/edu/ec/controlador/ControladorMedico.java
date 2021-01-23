@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JComboBox;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -39,7 +40,7 @@ public class ControladorMedico {
           preparedStmt.executeUpdate();
 
             // Cerramos las conexiones, en orden inverso a su apertura
-            System.out.println("Llamada agregada con �xito a la base de datos.");
+            System.out.println("Llamada agregada con exito a la base de datos.");
             JOptionPane.showMessageDialog(null, "Ingreso realizado con exito");
             preparedStmt.close();
         } catch (SQLException e) {
@@ -93,5 +94,29 @@ public class ControladorMedico {
 		
 		return med;
 	}
+        public JComboBox MostrarMedicosPorNombre(JComboBox medicos){
+         conexionBD.getConnection();
+           try {
+			String SQL = "SELECT idMedico ,CONCAT(nombre, apellido)as nombres FROM medico ";
+			Statement stmt = conexionBD.con.createStatement();
+			ResultSet rs = stmt.executeQuery(SQL);
+                        medicos.addItem("Seleccione una opción");
+			while (rs.next()) {
+				medicos.addItem(rs.getString("nombres"));
+                                
+			}
+			rs.close();
+			stmt.close();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "No se pudo listar");
+			e.printStackTrace();
+		}
+		
+                
+   
+        return medicos;
+}
+    
 
 }
+
