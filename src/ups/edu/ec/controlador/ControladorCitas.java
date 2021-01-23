@@ -5,12 +5,15 @@
  */
 package ups.edu.ec.controlador;
 
+import com.toedter.calendar.JDateChooser;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.util.Date;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -102,10 +105,11 @@ public class ControladorCitas {
 
 			psCita.close();
 			banderaIngresoCita = true;
-			System.out.println("Llamada agregada con exito a la base de datos.");
+                        JOptionPane.showMessageDialog(null, "Llamada agregada con exito a la base de datos.");
+		
 		} catch (SQLException e) {
 			banderaIngresoCita = false;
-			System.out.println("Error!, la llamada no pudo ser agregada a la base de datos.");
+			JOptionPane.showMessageDialog(null,"Error!, la llamada no pudo ser agregada a la base de datos.");
 		}
 
 		return banderaIngresoCita;
@@ -113,9 +117,9 @@ public class ControladorCitas {
         public JTextField BuscarPaciente(String cedula , JTextField paciente , JTextField pacienteid) {// METODO BUSCAR CEDULA PACIENTE 
 
 		conexionBD.getConnection();
-                //PreparedStatement psPaciente = null;"
+                //"SELECT p.idPaciente,c.fecha,CONCAT(p.nombre, p.apellido)as nombres FROM Paciente p , CitaMedica c where p.idPaciente=c.Paciente_idPaciente And cedula = "+cedula+""
               try {
-		String queryBuscarP = "SELECT idPaciente,CONCAT(nombre, apellido)as nombres FROM Paciente where cedula = "+cedula+"";
+		String queryBuscarP = "SELECT idPaciente,CONCAT(nombre,apellido)as nombres FROM Paciente where cedula = "+cedula+"";
                 Statement stmt = conexionBD.con.createStatement();
 	        ResultSet rs = stmt.executeQuery(queryBuscarP);
                // psPaciente = conexionBD.con.prepareStatement(queryBuscarP);
@@ -125,16 +129,59 @@ public class ControladorCitas {
 				System.out.println(rs.getInt("idPaciente") + "|" + rs.getString("nombres"));
                                  paciente.setText(rs.getString("nombres"));
                                  pacienteid.setText(String.valueOf(rs.getInt("idPaciente")));
+                                 //fecha.setDate(rs.getDate("c.fecha"));
                                  
 			}
 			rs.close();
 			stmt.close();
 		} catch (Exception e) {
 			System.out.println("Error!");
+                        e.printStackTrace();
 		}
                     return paciente;
 		
 	}// METODO BUSCAR CEDULA PACIENTE 
-
-	     
+         public void BorrarTuplaCita(int idpaciente ,Date fecha) {
+             conexionBD.getConnection();
+		try
+		{
+	      String query = "delete from CitaMedica where Paciente_idPaciente = ? And fecha=? ";
+	      PreparedStatement preparedStmt = conexionBD.con.prepareStatement(query);
+	      preparedStmt.setInt(1, idpaciente);
+              preparedStmt.setDate(2, (java.sql.Date) fecha);
+	      // execute the preparedstatement
+	      preparedStmt.execute();
+	      System.out.println();
+	      conexionBD.con.close();
+	    }
+	    catch (Exception e)
+	    {
+	      System.err.println("Error! ");
+	      System.err.println(e.getMessage());
+	    }
+	
+	}
+            public JComboBox MostrarfechasPorId(JComboBox fechas,int idpaciente){
+                conexionBD.getConnection();
+           try {
+			String SQL = "SELECT c.fecha FROM CitaMedica c , Paciente p where c.Paciente_idPaciente = p.idPaciente And p.idPaciente= "+idpaciente+" ";
+			Statement stmt = conexionBD.con.createStatement();
+			ResultSet rs = stmt.executeQuery(SQL);
+                        fechas.addItem("Seleccione una opción");
+			while (rs.next()) {
+				fechas.addItem(rs.getDate("c.fecha"));
+                                
+			}
+			rs.close();
+			stmt.close();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "No se pudo listar");
+			e.printStackTrace();
+		}
+		
+                
+   
+        return fechas;
+}
+    
 }
