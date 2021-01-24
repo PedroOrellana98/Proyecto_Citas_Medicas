@@ -49,8 +49,11 @@ public class Main {
 	//Horario horario = new Horario();
         //horario.setVisible(true);
         
-        Mregistro m = new Mregistro();
-        m.setVisible(true);
+        // m = new Mregistro();
+        //m.setVisible(true);
+        
+        RegistroCitas rc = new RegistroCitas();
+        rc.setVisible(true);
     }
 
 }

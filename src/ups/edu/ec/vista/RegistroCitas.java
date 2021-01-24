@@ -361,9 +361,6 @@ ControladorSecretaria cs = new ControladorSecretaria();
         cs.MostrarSecretariaPorNombre(jsecre);
         ct.BuscarPaciente(txtbuscar.getText(),txtpaciente,txtidpaciente);    
         ct.MostrarfechasPorId(jfechas, Integer.parseInt(txtidpaciente.getText()));
-        
-       
-       
     }//GEN-LAST:event_cmdBuscarActionPerformed
 
     private void txtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarActionPerformed
