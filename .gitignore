@@ -1,3 +1,6 @@
 /target/
 .classpath
 .idea/workspace.xml
+.DS_Store
+.classpath
+.classpath
