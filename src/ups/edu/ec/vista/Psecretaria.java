@@ -226,7 +226,7 @@ public class Psecretaria extends JFrame {
 		JButton btnRegistro_1_1 = new JButton("");
 		btnRegistro_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Mregistro pm=new Mregistro();
+				pmedico pm=new pmedico();
 				pm.setVisible(true);
                                 dispose();
 			}

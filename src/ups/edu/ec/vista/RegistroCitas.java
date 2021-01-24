@@ -350,7 +350,7 @@ ControladorSecretaria cs = new ControladorSecretaria();
        ControladorCitas ct = new ControladorCitas();
         cm.MostrarMedicosPorNombre(jmedico);
         cs.MostrarSecretariaPorNombre(jsecre);
-        ct.BuscarPaciente(txtbuscar.getText(),txtpaciente,txtidpaciente);    
+       /// ct.BuscarPaciente(txtbuscar.getText(),txtpaciente,txtidpaciente);    
         ct.MostrarfechasPorId(jfechas, Integer.parseInt(txtidpaciente.getText()));
     }//GEN-LAST:event_cmdBuscarActionPerformed
 
