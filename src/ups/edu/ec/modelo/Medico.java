@@ -115,6 +115,10 @@ public class Medico extends Persona implements Serializable {
 		return "Medico [me_id=" + me_id + ", me_especialidad=" + me_especialidad + ", sueldo=" + sueldo + ", horario="
 				+ horario + ", paciente=" + paciente + "]";
 	}
+
+    public Medico toString(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 	
 }

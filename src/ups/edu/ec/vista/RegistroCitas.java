@@ -13,11 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.control.ComboBox;
 import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import ups.edu.ec.controlador.ControladorCitas;
 import ups.edu.ec.controlador.ControladorHorario;
 import ups.edu.ec.controlador.ControladorMedico;
 import ups.edu.ec.controlador.ControladorSecretaria;
+import ups.edu.ec.modelo.Cita_Medica;
 import ups.edu.ec.modelo.Medico;
+import ups.edu.ec.modelo.Paciente;
+import ups.edu.ec.modelo.Secretaria;
 
 /**
  *
@@ -55,7 +60,7 @@ ControladorSecretaria cs = new ControladorSecretaria();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cmdBuscar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        cmdListar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         label1 = new java.awt.Label();
@@ -73,7 +78,7 @@ ControladorSecretaria cs = new ControladorSecretaria();
         txtidpaciente = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableCitas = new javax.swing.JTable();
         cmdEliminar = new javax.swing.JButton();
         jfechas = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
@@ -100,7 +105,12 @@ ControladorSecretaria cs = new ControladorSecretaria();
             }
         });
 
-        jButton2.setText("Listar");
+        cmdListar.setText("Listar");
+        cmdListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdListarActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Regresar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -158,23 +168,25 @@ ControladorSecretaria cs = new ControladorSecretaria();
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cmdRegistrarCita)
-                                    .addComponent(jsecre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 31, Short.MAX_VALUE))
-                                    .addComponent(txthora))))
+                                    .addComponent(jsecre, 0, 162, Short.MAX_VALUE))))
                         .addGap(92, 92, 92))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtpaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(txthora)
+                                .addGap(92, 92, 92))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txtidpaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,8 +204,8 @@ ControladorSecretaria cs = new ControladorSecretaria();
                     .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txthora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -226,7 +238,7 @@ ControladorSecretaria cs = new ControladorSecretaria();
             .addGap(0, 1, Short.MAX_VALUE)
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableCitas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -234,10 +246,17 @@ ControladorSecretaria cs = new ControladorSecretaria();
                 {null, null, null, null, null}
             },
             new String [] {
-                "Fecha", "Hora", "Paciente", "Medico", "Secretaria"
+                "Fecha", "Hora", "Secretaria", "Paciente", "Medico"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableCitas);
+        if (tableCitas.getColumnModel().getColumnCount() > 0) {
+            tableCitas.getColumnModel().getColumn(0).setHeaderValue("Fecha");
+            tableCitas.getColumnModel().getColumn(1).setHeaderValue("Hora");
+            tableCitas.getColumnModel().getColumn(2).setHeaderValue("Secretaria");
+            tableCitas.getColumnModel().getColumn(3).setHeaderValue("Paciente");
+            tableCitas.getColumnModel().getColumn(4).setHeaderValue("Medico");
+        }
 
         cmdEliminar.setText("Eliminar Cita");
         cmdEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -266,24 +285,25 @@ ControladorSecretaria cs = new ControladorSecretaria();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(cmdBuscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jfechas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmdEliminar))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(84, 84, 84))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(267, 267, 267)))
-                .addComponent(jButton3)
-                .addGap(82, 82, 82))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(cmdBuscar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmdListar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jfechas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cmdEliminar))
+                                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(35, 35, 35))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(218, 218, 218)))
+                        .addComponent(jButton3))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(131, 131, 131))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,7 +320,7 @@ ControladorSecretaria cs = new ControladorSecretaria();
                             .addComponent(jLabel1)
                             .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmdBuscar)
-                            .addComponent(jButton2)
+                            .addComponent(cmdListar)
                             .addComponent(cmdEliminar)
                             .addComponent(jfechas, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -336,7 +356,7 @@ ControladorSecretaria cs = new ControladorSecretaria();
 
     private void cmdBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBuscarActionPerformed
         // TODO add your handling code here:
-        ControladorCitas ct = new ControladorCitas();
+       ControladorCitas ct = new ControladorCitas();
         cm.MostrarMedicosPorNombre(jmedico);
         cs.MostrarSecretariaPorNombre(jsecre);
         ct.BuscarPaciente(txtbuscar.getText(),txtpaciente,txtidpaciente);    
@@ -352,7 +372,7 @@ ControladorSecretaria cs = new ControladorSecretaria();
 
     private void cmdRegistrarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRegistrarCitaActionPerformed
         // TODO add your handling code here:
-        ControladorCitas ct = new ControladorCitas();
+       ControladorCitas ct = new ControladorCitas();
        // System.out.println((ct.BuscarPaciente(txtpaciente.getText().trim())));
    //new java.sql.Date(jfecha.getDate().getTime())
          
@@ -370,10 +390,42 @@ ControladorSecretaria cs = new ControladorSecretaria();
 
     private void cmdEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdEliminarActionPerformed
         // TODO add your handling code here:
-         ControladorCitas ct = new ControladorCitas();
+        ControladorCitas ct = new ControladorCitas();
         ct.BorrarTuplaCita(Integer.parseInt(txtidpaciente.getText()), (java.util.Date) ct.MostrarfechasPorId(jfechas, Integer.parseInt(txtidpaciente.getText())).getSelectedItem());
         
     }//GEN-LAST:event_cmdEliminarActionPerformed
+
+    private void cmdListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdListarActionPerformed
+        // TODO add your handling code here:
+                DefaultTableModel modelo = new DefaultTableModel();
+                List<Cita_Medica> lista = ct.MostrarCitas();
+                List<Secretaria> lista1 = ct.MostrarSecre();
+                List<Paciente> lista2 = ct.MostrarPaciente();
+                List<Medico> lista3 = cm.MostrarMedicos1();
+                String columna1 = "Fecha";
+                String columna2 = "Hora";
+                String columna3 = "Secretaria";
+                String columna4 = "Paciente";
+                String columna5 = "Medico";
+                modelo.addColumn(columna1);
+                modelo.addColumn(columna2);
+                modelo.addColumn(columna3);
+                modelo.addColumn(columna4);
+                modelo.addColumn(columna5);
+                Object[] objeto = new Object[5];
+                
+                for (int i = 0; i < lista.size(); i++) {
+                    objeto[0] = lista.get(i).getCit_fecha();
+                    objeto[1] = lista.get(i).getCit_hora();
+                    objeto[2] = lista1.get(i).getPer_nombre();
+                    objeto[3] = lista2.get(i).getPer_nombre();
+                    objeto[4] = lista3.get(i).getPer_nombre();
+                    modelo.addRow(objeto);
+                }
+                tableCitas = new JTable();
+                tableCitas.setModel(modelo);
+                jScrollPane1.setViewportView(tableCitas);
+    }//GEN-LAST:event_cmdListarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -416,8 +468,8 @@ ControladorSecretaria cs = new ControladorSecretaria();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cmdBuscar;
     private javax.swing.JButton cmdEliminar;
+    private javax.swing.JButton cmdListar;
     private javax.swing.JButton cmdRegistrarCita;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -429,7 +481,6 @@ ControladorSecretaria cs = new ControladorSecretaria();
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private com.toedter.calendar.JDateChooser jfecha;
     private javax.swing.JComboBox<String> jfechas;
     private javax.swing.JComboBox<String> jmedico;
@@ -437,6 +488,7 @@ ControladorSecretaria cs = new ControladorSecretaria();
     private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.Label label3;
+    public javax.swing.JTable tableCitas;
     private javax.swing.JTextField txtbuscar;
     private javax.swing.JTextField txthora;
     private javax.swing.JTextField txtidpaciente;

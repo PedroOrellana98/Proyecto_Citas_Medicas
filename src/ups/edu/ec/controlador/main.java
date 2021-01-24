@@ -8,8 +8,8 @@ public class main {
 		// TODO Auto-generated method stub
               //  ControladorHorario ct = new ControladorHorario();
                 //ct.MostrarHorario();
-	     //ControladorCitas ct = new ControladorCitas();
-             // ct.BorrarTuplaCita(1,Date.valueOf("2021-01-13"));
+	    // ControladorCitas ct = new ControladorCitas();
+            // ct.MostrarSecre();
            RegistroCitas citas = new RegistroCitas();
            citas.setVisible(true);
 		

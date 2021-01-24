@@ -94,6 +94,33 @@ public class ControladorMedico {
 		
 		return med;
 	}
+        
+        public List<Medico> MostrarMedicos1() {// METODO MOSTRAR FACTURAS
+		conexionBD.getConnection();
+
+		List<Medico> med = new ArrayList<Medico>();
+		m = new Medico();
+		
+		try {
+	                String SQL = "select c.fecha,c.hora,CONCAT(s.nombre, s.apellido)as secretaria,CONCAT(p.nombre, p.apellido)as paciente ,CONCAT(m.nombre, m.apellido)as medico from CitaMedica c , Secretaria s ,Paciente p , Medico m where c.Secretaria_idSecretaria=s.idSecretaria And c.Paciente_idPaciente=p.idPaciente And c.Medico_idMedico=m.idMedico";
+
+			Statement stmt = conexionBD.con.createStatement();
+			ResultSet rs = stmt.executeQuery(SQL);
+
+			while (rs.next()) {
+				m.setPer_nombre(rs.getString("medico"));
+				
+				med.add(m);
+			}
+			rs.close();
+			stmt.close();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "No se pudo listar");
+			e.printStackTrace();
+		}
+		
+		return med;
+	}
         public JComboBox MostrarMedicosPorNombre(JComboBox medicos){
          conexionBD.getConnection();
            try {
