@@ -282,7 +282,7 @@ public class Pmedico extends JFrame {
 		
 		JComboBox mcomboBox = new JComboBox();
 		ArrayList<String> lista=new ArrayList<String>();
-		lista = Conexion.llenarCombo();
+		//lista = Conexion.llenarCombo();
 		for (int i = 0; i < lista.size(); i++) {
 			mcomboBox.addItem(lista.get(i));
 		}

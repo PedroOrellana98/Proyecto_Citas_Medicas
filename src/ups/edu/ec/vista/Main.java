@@ -10,7 +10,7 @@ import ups.edu.ec.controlador.ControladorMedico;
 
 public class Main {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 		
 		/*ControladorFactura cf = new ControladorFactura();
 		
@@ -32,17 +32,28 @@ public class Main {
 		cm.insertarMedico(1, "Juan", "Ortiz", "0101234567", "jaunortiz@gmail.com", "juan123", 1);
 		cm.MostrarMedicos();*/
 		
-	ControladorHorario ch = new ControladorHorario();
+		/*ControladorHorario ch = new ControladorHorario();
 		
 		LocalTime horaIngreso = LocalTime.parse("12:00");
 		LocalTime horaSalida = LocalTime.parse("15:00");
 
 		ch.InsertarHorario(Time.valueOf(horaIngreso), Time.valueOf(horaSalida));
 		ch.MostrarHorario();
-		
-		Mregistro m = new Mregistro();
+                
+                Mregistro m = new Mregistro();
 		m.setVisible(true);
-
-	}
+                
+                Index index = new Index();
+		index.setVisible(true);*/
+		
+	//Horario horario = new Horario();
+        //horario.setVisible(true);
+        
+        // m = new Mregistro();
+        //m.setVisible(true);
+        
+        RegistroCitas rc = new RegistroCitas();
+        rc.setVisible(true);
+    }
 
 }
