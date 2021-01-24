@@ -49,7 +49,7 @@ public class Mregistro extends JFrame {
             public void run() {
                 try {
                     Mregistro frame = new Mregistro();
-                    frame.setVisible(true);
+                    frame.setVisible(true); 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -77,7 +77,7 @@ public class Mregistro extends JFrame {
 
         JLabel lblNewLabel = new JLabel("");
         lblNewLabel.setBounds(283, 5, 96, 96);
-        lblNewLabel.setIcon(new ImageIcon(Mregistro.class.getResource("/imagen/icons8_User_96px_2.png")));
+        lblNewLabel.setIcon(new ImageIcon(Mregistro.class.getResource("/imagen/doctor.png")));
         panel.add(lblNewLabel);
 
         JButton btnvolver = new JButton("");
@@ -85,6 +85,7 @@ public class Mregistro extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Psecretaria ps = new Psecretaria();
                 ps.setVisible(true);
+                dispose();
             }
         });
         btnvolver.setIcon(new ImageIcon(Mregistro.class.getResource("/imagen/volver.png")));

@@ -79,6 +79,21 @@ public class Pespecialidad extends JFrame {
 		panel.setBounds(0, 0, 552, 113);
 		contentPane.add(panel);
 		panel.setLayout(null);
+                
+                JButton btnvolver = new JButton("");
+		btnvolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Psecretaria ps=new Psecretaria();
+				ps.setVisible(true);
+                                dispose();
+			}
+		});
+                
+                btnvolver.setIcon(new ImageIcon(Pregistro.class.getResource("/imagen/volver.png")));
+		btnvolver.setBorder(null);
+		btnvolver.setBackground((Color) null);
+		btnvolver.setBounds(10, 5, 38, 40);
+		panel.add(btnvolver);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Pespecialidad.class.getResource("/imagen/cientifico.png")));

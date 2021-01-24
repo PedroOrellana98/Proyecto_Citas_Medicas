@@ -96,6 +96,7 @@ public class Pregistro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Psecretaria ps=new Psecretaria();
 				ps.setVisible(true);
+                                dispose();
 			}
 		});
 		btnvolver.setIcon(new ImageIcon(Pregistro.class.getResource("/imagen/volver.png")));

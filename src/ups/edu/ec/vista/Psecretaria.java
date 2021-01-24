@@ -130,11 +130,20 @@ public class Psecretaria extends JFrame {
 		lblNewLabel_5.setIcon(new ImageIcon(Index.class.getResource("/imagen/icons8_Today_96px.png")));
 		lblNewLabel_5.setBounds(417, 185, 101, 124);
 		panel_2.add(lblNewLabel_5);
-		
-		JLabel lblNewLabel_5_1_1 = new JLabel("");
-		lblNewLabel_5_1_1.setIcon(new ImageIcon(Index.class.getResource("/imagen/agenda.png")));
-		lblNewLabel_5_1_1.setBounds(75, 185, 101, 124);
-		panel_2.add(lblNewLabel_5_1_1);
+                
+                JButton btnRegistroM = new JButton("");
+		btnRegistroM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegistroCitas rc = new RegistroCitas();
+				rc.setVisible(true);
+                                dispose();
+			}
+		});
+		btnRegistroM.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/agenda.png")));
+		btnRegistroM.setBackground(null);
+		btnRegistroM.setBorder(null);
+		btnRegistroM.setBounds(75, 185, 101, 124);
+		panel_2.add(btnRegistroM);
 		
 		JLabel lblNewLabel_5_1_1_1 = new JLabel("");
 		lblNewLabel_5_1_1_1.setIcon(new ImageIcon(Index.class.getResource("/imagen/yu (1).png")));
@@ -180,9 +189,9 @@ public class Psecretaria extends JFrame {
 		JButton btnRegistro = new JButton("");
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				Pregistro pr=new Pregistro();
+				Pregistro pr = new Pregistro();
 				pr.setVisible(true);
+                                dispose();
 			}
 		});
 		btnRegistro.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/icons8_User_96px_2.png")));
@@ -196,7 +205,7 @@ public class Psecretaria extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Pespecialidad pe=new Pespecialidad();
 				pe.setVisible(true);
-				
+                                dispose();
 			}
 		});
 		btnRegistro_1.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/cientifico.png")));
@@ -217,8 +226,9 @@ public class Psecretaria extends JFrame {
 		JButton btnRegistro_1_1 = new JButton("");
 		btnRegistro_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Pmedico pm=new Pmedico();
+				Mregistro pm=new Mregistro();
 				pm.setVisible(true);
+                                dispose();
 			}
 		});
 		btnRegistro_1_1.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/doctor.png")));
