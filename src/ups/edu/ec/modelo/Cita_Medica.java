@@ -11,6 +11,7 @@ public class Cita_Medica implements Serializable {
 	private Paciente cit_paciente;
 	private Medico cit_medico;
 	private Secretaria secre;
+    
 
 	public Cita_Medica() {
 

@@ -72,6 +72,10 @@ public class Secretaria extends Persona implements Serializable {
 	public String toString() {
 		return "Secretaria [se_id=" + se_id + ", libroDiario=" + libroDiario + "]";
 	}
+
+    public Secretaria toString(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }
 

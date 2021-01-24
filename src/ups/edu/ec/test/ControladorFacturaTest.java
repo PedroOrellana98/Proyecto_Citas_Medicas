@@ -13,7 +13,7 @@ public class ControladorFacturaTest {
 	public void testInsertarFactura() {
 		
 		ControladorFactura cf = new ControladorFactura();
-		boolean banderaIngresoFact = cf.InsertarFactura("2021-01-01", (float)0.0, (float)0.0, (float)0.0, "T", "Descripción");
+		boolean banderaIngresoFact = cf.InsertarFactura("2021-01-01", (float)0.0, (float)0.0, (float)0.0, "T", "Descripcion");
 		boolean banderaEsperada = true;
 		assertEquals(banderaEsperada, banderaIngresoFact);
 		
