@@ -203,7 +203,7 @@ public class Psecretaria extends JFrame {
 		JButton btnRegistro_1 = new JButton("");
 		btnRegistro_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Factura f = new Factura();
+				Pcomprobante f = new Pcomprobante();
                                 f.setVisible(true);
                                 dispose();
 			}
