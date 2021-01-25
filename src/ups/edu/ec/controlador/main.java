@@ -2,6 +2,7 @@ package ups.edu.ec.controlador;
 import java.sql.Date;
 import java.time.LocalDate;
 import ups.edu.ec.test.ControladorCitasTest;
+import ups.edu.ec.vista.CertificadosMedicos;
 import ups.edu.ec.vista.RecetaMedica;
 import ups.edu.ec.vista.RegistroCitas;
 public class main {

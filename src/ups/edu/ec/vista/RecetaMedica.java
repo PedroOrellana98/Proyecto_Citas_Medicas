@@ -226,6 +226,11 @@ public class RecetaMedica extends javax.swing.JFrame {
         jLabel12.setText("Fecha de Emision:");
 
         cmdCertificado.setText("Generar Certficado Medico");
+        cmdCertificado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCertificadoActionPerformed(evt);
+            }
+        });
 
         cmdOrden.setText("Orden Medica");
 
@@ -484,6 +489,12 @@ public class RecetaMedica extends javax.swing.JFrame {
         ControladorConsultas cc = new ControladorConsultas();
         cc.BuscarMedicamento(txtBM.getText(),txtMedicamento);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cmdCertificadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCertificadoActionPerformed
+        // TODO add your handling code here:
+        CertificadosMedicos c = new CertificadosMedicos();
+        c.setVisible(true);
+    }//GEN-LAST:event_cmdCertificadoActionPerformed
 
     /**
      * @param args the command line arguments
