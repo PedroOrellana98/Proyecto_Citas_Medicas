@@ -36,7 +36,7 @@ public class ControladorEspecialidad {
             idEspecialidad = 0;
 
             while (rs.next()) {
-                idEspecialidad = rs.getInt("idEspecilidad");
+                idEspecialidad = rs.getInt("idEspecialidad");
             }
 
             rs.close();
@@ -54,15 +54,17 @@ public class ControladorEspecialidad {
         // Crear sentencia SQL para insertar en la base de datos
         String query = "INSERT INTO Especialidad (idEspecialidad, nombre, Medico_idMedico, Medico_Horario_idHorario) values (?, ?, ?, ?)";
         
-        int idHorario = ControladorHorario.idHorario;
-        int idMedico = ControladorMedico.idMedico;
-        idEspecialidad++;
+        ControladorHorario ch = new ControladorHorario();
+        ControladorMedico cm = new ControladorMedico();
+        int idHorario = ch.ObtenerMaximaId();
+        int idMedico = cm.ObtenerMaximaId();
+        int id = ObtenerMaximaId();
         
         try {
-            idHorario++;
+            id++;
             PreparedStatement preparedStmt = conexionBD.con.prepareStatement(query);
 
-            preparedStmt.setInt(1, idEspecialidad);
+            preparedStmt.setInt(1, id);
             preparedStmt.setString(2, nombre);
             preparedStmt.setInt(3, idMedico);
             preparedStmt.setInt(4, idHorario);

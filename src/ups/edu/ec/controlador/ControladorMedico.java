@@ -55,12 +55,13 @@ public class ControladorMedico {
         String query = "INSERT INTO Medico (idMedico, nombre, apellido, cedula, correo, contrasena, Horario_idHorario) values (?, ?, ?, ?, ?, ?, ?)";
 
         int idHorario = ControladorHorario.idHorario;
-        idMedico++;
+        int id = ObtenerMaximaId();
         try {
             idHorario++;
+            id++;
             PreparedStatement preparedStmt = conexionBD.con.prepareStatement(query);
 
-            preparedStmt.setInt(1, idMedico);
+            preparedStmt.setInt(1, id);
             preparedStmt.setString(2, nombre);
             preparedStmt.setString(3, apellido);
             preparedStmt.setString(4, cedula);

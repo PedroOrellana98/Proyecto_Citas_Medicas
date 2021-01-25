@@ -1,5 +1,7 @@
 package ups.edu.ec.vista;
 
+import ups.edu.ec.controlador.ControladorFactura;
+
 
 public class Main {
 
@@ -14,8 +16,14 @@ public class Main {
         Index i = new Index();
         i.setVisible(true);*/
         
-        Psecretaria p = new Psecretaria();
-        p.setVisible(true);
+        //Psecretaria p = new Psecretaria();
+        //p.setVisible(true);
+        
+        Index index = new Index();
+        index.setVisible(true);
+        
+        //ControladorFactura cf = new ControladorFactura();
+        //cf.MostrarFacturas();
         
     }
 
