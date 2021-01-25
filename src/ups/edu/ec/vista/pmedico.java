@@ -19,7 +19,11 @@ import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import ups.edu.ec.controlador.ControladorMedico;
+
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.DropMode;
 import java.awt.Label;
@@ -254,6 +258,11 @@ public class pmedico extends JFrame {
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(414, 101, 179, 20);
+		ArrayList<String> lista=new ArrayList<String>();
+		lista =ControladorMedico.llenarComboEspe();
+		for (int i = 0; i < lista.size(); i++) {
+			comboBox.addItem(lista.get(i));
+		}
 		panel_1.add(comboBox);
 	}
 }

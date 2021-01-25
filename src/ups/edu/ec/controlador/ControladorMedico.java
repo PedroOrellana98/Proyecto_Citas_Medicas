@@ -20,6 +20,10 @@ public class ControladorMedico {
     public static Medico m;
     public static int idMedico;
     public static List<Medico> med;
+    
+    static Statement sentencia;
+    static ResultSet resultado;
+    
 
     public int ObtenerMaximaId() {// METODO OBTENER MAXIMA ID
 
@@ -202,6 +206,27 @@ public class ControladorMedico {
 		
 		return med;
 	}
+            
+            public static ArrayList<String> llenarComboEspe() {
+            	ArrayList<String> list=new ArrayList<String>();
+            	String q ="SELECT * FROM  especialidades";
+            	try {
+					resultado = sentencia.executeQuery(q);	
+					System.out.println("Correcto");
+				} catch (Exception e) {
+					System.out.println("Correcto");
+				}
+            	try {
+					while (resultado.next()) {
+						list.add(resultado.getString("nombre"));
+						
+					}
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+            	
+            	return list;
+			}
             
         public JComboBox MostrarMedicosPorNombre(JComboBox medicos){
          conexionBD.getConnection();

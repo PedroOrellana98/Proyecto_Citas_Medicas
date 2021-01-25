@@ -231,7 +231,7 @@ public class Psecretaria extends JFrame {
                                 dispose();
 			}
 		});
-		btnRegistro_1_1.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/doctor.png")));
+		btnRegistro_1_1.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/doctor (1).png")));
 		btnRegistro_1_1.setBorder(null);
 		btnRegistro_1_1.setBackground((Color) null);
 		btnRegistro_1_1.setBounds(75, 39, 89, 86);
