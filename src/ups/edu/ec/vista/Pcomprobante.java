@@ -113,10 +113,17 @@ public class Pcomprobante extends JFrame {
 		panel_4.setBackground(new Color(240, 128, 128));
 		panel_4.setBounds(334, 36, 219, 70);
 		panel.add(panel_4);
+		panel_4.setLayout(null);
 		
 		JLabel lblNewLabel_4 = new JLabel("Numero de Factura");
+		lblNewLabel_4.setBounds(30, 5, 158, 20);
 		lblNewLabel_4.setFont(new Font("Verdana", Font.BOLD | Font.ITALIC, 15));
 		panel_4.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_7 = new JLabel("CP 001");
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_7.setBounds(86, 25, 73, 34);
+		panel_4.add(lblNewLabel_7);
 		
 		JLabel lblNewLabel_5 = new JLabel("Buscar:");
 		lblNewLabel_5.setFont(new Font("Verdana", Font.BOLD, 11));
