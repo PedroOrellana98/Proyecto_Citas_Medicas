@@ -16,6 +16,7 @@ import javax.swing.JSeparator;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import ups.edu.ec.controlador.ControladorLogin;
 
 public class Index extends JFrame {
 
@@ -119,21 +120,15 @@ public class Index extends JFrame {
 		JButton entrar = new JButton("");
 		entrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				char[] clave = password.getPassword();
-
-				String clavef = new String(clave);
-
-				if (Usuario.getText().equals("Secretaria") && clavef.equals("admin")) {
-					dispose();
-					JOptionPane.showMessageDialog(null, "Ingresando al sistema", "Ingresar",
-							JOptionPane.INFORMATION_MESSAGE);
-					Psecretaria ps = new Psecretaria();
-					ps.setVisible(true);
-					String inf = Usuario.getText();
-					ps.secUsuario.setText(inf);
-				} else {
-					JOptionPane.showMessageDialog(null, "Datos Incorrectos", "ERROR", JOptionPane.ERROR_MESSAGE);
-				}
+                                ControladorLogin cl = new ControladorLogin();
+                                
+                                if (cl.LoginMedico(Usuario.getText(), password.getText()) == true) {
+                                    
+                                 }else if(cl.LoginSecretaria(Usuario.getText(), password.getText()) == true){
+                                     Psecretaria sec = new Psecretaria();
+                                     sec.setVisible(true);
+                                 }
+				
 			}
 		});
 		entrar.setIcon(new ImageIcon(Index.class.getResource("/imagen/Enter_OFF.png")));

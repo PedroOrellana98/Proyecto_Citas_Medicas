@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ups.edu.ec.controlador;
 
 import java.sql.PreparedStatement;
@@ -6,33 +11,32 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JComboBox;
-
 import javax.swing.JOptionPane;
-import ups.edu.ec.modelo.Especialidad;
+import ups.edu.ec.modelo.Paciente;
 
-import ups.edu.ec.modelo.Medico;
-import ups.edu.ec.modelo.Horario;
-
-public class ControladorMedico {
-
+/**
+ *
+ * @author Pedro
+ */
+public class ControladorPaciente {
+    
     Conexion conexionBD = new Conexion();
-    public static Medico m;
-    public static int idMedico;
-    public static List<Medico> med;
+    public static Paciente p;
+    public static int idPaciente;
+    public static List<Paciente> pac;
 
     public int ObtenerMaximaId() {// METODO OBTENER MAXIMA ID
 
         conexionBD.getConnection();
 
         try {
-            String SQL = "SELECT * FROM medico";
+            String SQL = "SELECT * FROM paciente";
             Statement stmt = conexionBD.con.createStatement();
             ResultSet rs = stmt.executeQuery(SQL);
-            idMedico = 0;
+            idPaciente = 0;
 
             while (rs.next()) {
-                idMedico = rs.getInt("idMedico");
+                idPaciente = rs.getInt("idPaciente");
             }
 
             rs.close();
@@ -41,19 +45,41 @@ public class ControladorMedico {
             e.printStackTrace();
         }
 
-        return idMedico;
+        return idPaciente;
     }
 
-    public void insertarMedico(String nombre, String apellido, String cedula, String correo, String contraseña) {
+    public int ObtenerId(String nombre) {// METODO OBTENER MAXIMA ID
+
+        conexionBD.getConnection();
+        int id = 0;
+
+        try {
+            String SQL = "SELECT * FROM paciente where nombre = '" + nombre + "'";
+            Statement stmt = conexionBD.con.createStatement();
+            ResultSet rs = stmt.executeQuery(SQL);
+            
+
+            while (rs.next()) {
+                id = rs.getInt("idPaciente");
+            }
+
+            rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return id;
+    }
+    
+    public void insertarPaciente(String nombre, String apellido, String telefono, String cedula, String direccion, String correo) {
 
         conexionBD.getConnection();
         // Crear sentencia SQL para insertar en la base de datos
-        String query = "INSERT INTO Medico (idMedico, nombre, apellido, cedula, correo, contrasena, Horario_idHorario) values (?, ?, ?, ?, ?, ?, ?)";
-
-        int idHorario = ControladorHorario.idHorario;
+        String query = "INSERT INTO Paciente (idPaciente, nombre, apellido, cedula, correo, direccion, telefono) values (?, ?, ?, ?, ?, ?, ?)";
+        
         int id = ObtenerMaximaId();
         try {
-            idHorario++;
             id++;
             PreparedStatement preparedStmt = conexionBD.con.prepareStatement(query);
 
@@ -62,8 +88,8 @@ public class ControladorMedico {
             preparedStmt.setString(3, apellido);
             preparedStmt.setString(4, cedula);
             preparedStmt.setString(5, correo);
-            preparedStmt.setString(6, contraseña);
-            preparedStmt.setInt(7, idHorario);
+            preparedStmt.setString(6, direccion);
+            preparedStmt.setString(7, telefono);
 
             // Indicamos que comience la actualización de la tabla en nuestra base de datos
             preparedStmt.executeUpdate();
@@ -76,10 +102,10 @@ public class ControladorMedico {
         }
     }
 
-    public List<Medico> ListarMedicos() {// METODO MOSTRAR FACTURAS
+    /*public List<Paciente> ListarMedicos() {// METODO MOSTRAR FACTURAS
         conexionBD.getConnection();
 
-        med = new ArrayList<Medico>();
+        pac = new ArrayList<Paciente>();
         try {
             String SQL = "SELECT * FROM medico m, especialidad e, horario h where "
                     + "h.idHorario = Horario_idHorario AND m.idMedico = e.Medico_idMedico";
@@ -101,25 +127,26 @@ public class ControladorMedico {
         }
 
         return med;
-    }
+    }*/
 
-    public List<Medico> MostrarMedico() {// METODO MOSTRAR FACTURAS
+    public List<Paciente> MostrarPaciente() {// METODO MOSTRAR FACTURAS
         conexionBD.getConnection();
 
-        med = new ArrayList<Medico>();
+        pac = new ArrayList<Paciente>();
         try {
-            String SQL = "SELECT * FROM medico";
+            String SQL = "SELECT * FROM paciente";
             Statement stmt = conexionBD.con.createStatement();
             ResultSet rs = stmt.executeQuery(SQL);
             while (rs.next()) {
-                m = new Medico();
-                m.setPer_nombre(rs.getString("nombre"));
-                m.setPer_apellido(rs.getString("apellido"));
-                m.setPer_cedula(rs.getString("cedula"));
-                m.setPer_email(rs.getString("correo"));
-                med.add(m);
+                p = new Paciente();
+                p.setPer_nombre(rs.getString("nombre"));
+                p.setPer_apellido(rs.getString("apellido"));
+                p.setPer_cedula(rs.getString("cedula"));
+                p.setPer_email(rs.getString("correo"));
+                p.setPer_direccion(rs.getString("direccion"));
+                p.setPer_telefono(rs.getString("telefono"));
+                pac.add(p);
             }
-
             rs.close();
             stmt.close();
         } catch (Exception e) {
@@ -127,23 +154,25 @@ public class ControladorMedico {
             e.printStackTrace();
         }
 
-        return med;
+        return pac;
     }
 
-    public Medico BuscarMedico(String nombre) {
+    public Paciente BuscarPaciente(String nombre) {
         conexionBD.getConnection();
 
-        m = new Medico();
+        p = new Paciente();
         try {
-            String SQL = "SELECT * FROM medico WHERE nombre  = '" + nombre + "'";
+            String SQL = "SELECT * FROM paciente WHERE nombre  = '" + nombre + "'";
             Statement stmt = conexionBD.con.createStatement();
             ResultSet rs = stmt.executeQuery(SQL);
 
             while (rs.next()) {
-                m.setPer_nombre(rs.getString("nombre"));
-                m.setPer_apellido(rs.getString("apellido"));
-                m.setPer_cedula(rs.getString("cedula"));
-                m.setPer_email(rs.getString("correo"));
+                p.setPer_nombre(rs.getString("nombre"));
+                p.setPer_apellido(rs.getString("apellido"));
+                p.setPer_cedula(rs.getString("cedula"));
+                p.setPer_email(rs.getString("correo"));
+                p.setPer_direccion(rs.getString("direccion"));
+                p.setPer_telefono(rs.getString("telefono"));
             }
             rs.close();
             stmt.close();
@@ -152,13 +181,13 @@ public class ControladorMedico {
             e.printStackTrace();
         }
 
-        return m;
+        return p;
     }
 
-    public void EliminarMedico(String nombre) {
+    public void EliminarPaciente(String nombre) {
         conexionBD.getConnection();
         // Crear sentencia SQL para insertar en la base de datos
-        String query = "DELETE FROM medico WHERE nombre  = ?";
+        String query = "DELETE FROM paciente WHERE nombre  = ?";
 
         try {
             PreparedStatement preparedStmt = conexionBD.con.prepareStatement(query);
@@ -177,54 +206,4 @@ public class ControladorMedico {
         }
     }
     
-            public List<Medico> MostrarMedicos1() {// METODO MOSTRAR FACTURAS
-		conexionBD.getConnection();
-
-		List<Medico> med = new ArrayList<Medico>();
-		m = new Medico();
-		
-		try {
-	                String SQL = "select c.fecha,c.hora,CONCAT(s.nombre, s.apellido)as secretaria,CONCAT(p.nombre, p.apellido)as paciente ,CONCAT(m.nombre, m.apellido)as medico from CitaMedica c , Secretaria s ,Paciente p , Medico m where c.Secretaria_idSecretaria=s.idSecretaria And c.Paciente_idPaciente=p.idPaciente And c.Medico_idMedico=m.idMedico";
-
-			Statement stmt = conexionBD.con.createStatement();
-			ResultSet rs = stmt.executeQuery(SQL);
-
-			while (rs.next()) {
-				m.setPer_nombre(rs.getString("medico"));
-				
-				med.add(m);
-			}
-			rs.close();
-			stmt.close();
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "No se pudo listar");
-			e.printStackTrace();
-		}
-		
-		return med;
-	}
-            
-        public JComboBox MostrarMedicosPorNombre(JComboBox medicos){
-         conexionBD.getConnection();
-           try {
-			String SQL = "SELECT idMedico ,CONCAT(nombre, apellido)as nombres FROM medico ";
-			Statement stmt = conexionBD.con.createStatement();
-			ResultSet rs = stmt.executeQuery(SQL);
-                        medicos.addItem("Seleccione una opción");
-			while (rs.next()) {
-				medicos.addItem(rs.getString("nombres"));
-                                
-			}
-			rs.close();
-			stmt.close();
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "No se pudo listar");
-			e.printStackTrace();
-		}
-		
-                
-   
-        return medicos;
-}
-
 }

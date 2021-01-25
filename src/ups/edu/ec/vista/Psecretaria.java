@@ -203,19 +203,19 @@ public class Psecretaria extends JFrame {
 		JButton btnRegistro_1 = new JButton("");
 		btnRegistro_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Pespecialidad pe=new Pespecialidad();
-				pe.setVisible(true);
+				Factura f = new Factura();
+                                f.setVisible(true);
                                 dispose();
 			}
 		});
-		btnRegistro_1.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/cientifico.png")));
+		btnRegistro_1.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/cuenta.png")));
 		btnRegistro_1.setBorder(null);
 		btnRegistro_1.setBackground((Color) null);
 		btnRegistro_1.setBounds(418, 39, 89, 86);
 		panel_2.add(btnRegistro_1);
 		
 		txtRegistroEspecialidad = new JTextField();
-		txtRegistroEspecialidad.setText("Registro Especialidad");
+		txtRegistroEspecialidad.setText("Registro Factura");
 		txtRegistroEspecialidad.setForeground(new Color(244, 164, 96));
 		txtRegistroEspecialidad.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
 		txtRegistroEspecialidad.setColumns(10);
@@ -226,7 +226,7 @@ public class Psecretaria extends JFrame {
 		JButton btnRegistro_1_1 = new JButton("");
 		btnRegistro_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				pmedico pm=new pmedico();
+				Mregistro pm=new Mregistro();
 				pm.setVisible(true);
                                 dispose();
 			}
@@ -247,12 +247,21 @@ public class Psecretaria extends JFrame {
 		panel_2.add(txtRegistroMedico);
 		
 		JButton btnPago = new JButton("");
+                btnPago.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Ppagos p=new Ppagos();
+				p.setVisible(true);
+                                dispose();
+			}
+		});
 		btnPago.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/tarjeta-de-debito.png")));
 		btnPago.setBorder(null);
 		btnPago.setBackground((Color) null);
 		btnPago.setBounds(547, 39, 89, 86);
 		panel_2.add(btnPago);
 		
+                
+                
 		txtPagos = new JTextField();
 		txtPagos.setText("Pagos");
 		txtPagos.setForeground(new Color(244, 164, 96));
