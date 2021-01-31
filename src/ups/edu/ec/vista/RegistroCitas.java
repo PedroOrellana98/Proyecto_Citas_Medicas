@@ -377,9 +377,12 @@ ControladorSecretaria cs = new ControladorSecretaria();
    //new java.sql.Date(jfecha.getDate().getTime())
          
         ct.InsertarCita(new java.sql.Date(jfecha.getDate().getTime()),Time.valueOf(LocalTime.parse(txthora.getText())),cs.MostrarSecretariaPorNombre(jsecre).getSelectedIndex(),Integer.parseInt(txtidpaciente.getText()),cm.MostrarMedicosPorNombre(jmedico).getSelectedIndex());
+      
          jsecre.removeAllItems();
          jmedico.removeAllItems();
           jfechas.removeAllItems();
+          
+          
         //  System.out.println(cm.MostrarMedicosPorNombre(jmedico).getItemCount());
        // System.out.println(cs.MostrarSecretariaPorNombre(jsecre).getItemCount());
     }//GEN-LAST:event_cmdRegistrarCitaActionPerformed

@@ -12,27 +12,26 @@ import java.sql.Statement;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import static ups.edu.ec.controlador.ControladorConsultas.idMotivo;
 
 /**
  *
  * @author kevingodoy
  */
-public class ControladorCertificados {
-    public static int idCertificado;
+public class ControladorOrdenMedica {
+    public static int idOrden;
     Conexion conexionBD = new Conexion();
     public int ObtenerMaximaId() {// METODO OBTENER MAXIMA ID
 
 		conexionBD.getConnection();
 
 		try {
-			String SQL = "SELECT * FROM certificado";
+			String SQL = "SELECT * FROM ExamenesMedicos";
 			Statement stmt = conexionBD.con.createStatement();
 			ResultSet rs = stmt.executeQuery(SQL);
-			idCertificado = 0;
+			idOrden = 0;
 
 			while (rs.next()) {
-				idCertificado = rs.getInt("idCertficado");
+				idOrden = rs.getInt("idExamenesMedicos");
 			}
 
 			rs.close();
@@ -41,9 +40,9 @@ public class ControladorCertificados {
 			e.printStackTrace();
 		}
 
-		return idCertificado;
+		return idOrden;
 	}// METODO OBTENER MAXIMA ID
-    public JTextField BuscarPaciente(String cedula , JTextField nombre , JTextField apellido) {// METODO BUSCAR CEDULA PACIENTE 
+    public JTextField BuscarPaciente(String cedula , JTextField nombre , JTextField apellido,JTextField id) {// METODO BUSCAR CEDULA PACIENTE 
 
 		conexionBD.getConnection();
                 //"SELECT p.idPaciente,c.fecha,CONCAT(p.nombre, p.apellido)as nombres FROM Paciente p , CitaMedica c where p.idPaciente=c.Paciente_idPaciente And cedula = "+cedula+""
@@ -58,7 +57,7 @@ public class ControladorCertificados {
 				System.out.println(rs.getInt("idPaciente") + "|" + rs.getString("nombre")+ rs.getString("apellido"));
                                  nombre.setText(rs.getString("nombre"));
                                  apellido.setText(rs.getString("apellido"));
-
+                                 id.setText(String.valueOf(rs.getInt("idPaciente")));
                                 // pacienteid.setText(String.valueOf(rs.getInt("idPaciente")));
                                  //fecha.setDate(rs.getDate("c.fecha"));
                                  
@@ -72,40 +71,43 @@ public class ControladorCertificados {
                     return nombre;
 		
 	}
-    public boolean InsertarCertificado(Date fecha_inicio,Date fecha_fin,String descripcion) {// METODO INSERTAR Motivo
+    public boolean InsertarOrdenMedica(String descripcion,Date fecha,int medico,int paciente) {// METODO INSERTAR Motivo
 
-		boolean banderaIngresoCertificado = false;
+		boolean banderaIngresoOrden = false;
 
 		conexionBD.getConnection();
-		int idCertificado = ObtenerMaximaId();
-		PreparedStatement psCertificado = null;
+		int idExamenesMedicos = ObtenerMaximaId();
+		PreparedStatement psOrden = null;
 
-		String queryHorario = "INSERT INTO certificado (idCertificado, fecha_inicio,fecha_fin,descripcion) values (?, ?, ?, ?)";
+		String queryHorario = "INSERT INTO ExamenesMedicos (idExamenesMedicos,descripcion,fecha,Medico_idMedico,Paciente_idPaciente) values (?, ?, ?, ?, ?)";
                 
 
 		try {
 
-			idCertificado++;
-			psCertificado = conexionBD.con.prepareStatement(queryHorario);
+			idExamenesMedicos++;
+			psOrden = conexionBD.con.prepareStatement(queryHorario);
 
-			psCertificado.setInt(1, idCertificado);
-                        psCertificado.setDate(2, (java.sql.Date) fecha_inicio); //Cita A=Asignada 
-                        psCertificado.setDate(3, (java.sql.Date) fecha_fin);
-                        psCertificado.setString(4, descripcion);
+			psOrden.setInt(1, idExamenesMedicos);
+                        psOrden.setString(2, descripcion);
+                        psOrden.setDate(3, (java.sql.Date) fecha);
+                        psOrden.setInt(4, medico);
+                        psOrden.setInt(5, paciente);
                         
-			psCertificado.executeUpdate();
+			psOrden.executeUpdate();
 
-			psCertificado.close();
-			banderaIngresoCertificado = true;
+			psOrden.close();
+			banderaIngresoOrden = true;
                         JOptionPane.showMessageDialog(null, "Llamada agregada con exito a la base de datos.");
 		
 		} catch (SQLException e) {
-			banderaIngresoCertificado = false;
+			banderaIngresoOrden = false;
+                       // e.printStackTrace();
 			JOptionPane.showMessageDialog(null,"Error!, la llamada no pudo ser agregada a la base de datos.");
 		}
 
-		return banderaIngresoCertificado;
+		return banderaIngresoOrden;
 	}// METODO INSERTAR Motivo
+    
     
     
 }
