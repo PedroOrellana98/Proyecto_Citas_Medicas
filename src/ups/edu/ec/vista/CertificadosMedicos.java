@@ -49,6 +49,7 @@ public class CertificadosMedicos extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jfecha = new com.toedter.calendar.JDateChooser();
         jfecha1 = new com.toedter.calendar.JDateChooser();
+        cmdRegresar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
 
@@ -96,6 +97,14 @@ public class CertificadosMedicos extends javax.swing.JFrame {
 
         jLabel9.setText("Valido Hasta:");
 
+        cmdRegresar.setText("Regresar");
+        cmdRegresar.setToolTipText("");
+        cmdRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdRegresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -124,7 +133,9 @@ public class CertificadosMedicos extends javax.swing.JFrame {
                 .addContainerGap())
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addComponent(cmdRegresar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(15, 15, 15))
         );
@@ -150,7 +161,9 @@ public class CertificadosMedicos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(cmdRegresar))
                 .addContainerGap())
         );
 
@@ -227,6 +240,13 @@ public class CertificadosMedicos extends javax.swing.JFrame {
          cc.InsertarCertificado(new java.sql.Date(jfecha.getDate().getTime()),new java.sql.Date(jfecha1.getDate().getTime()),txtDescripcion.getText());
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void cmdRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRegresarActionPerformed
+        // TODO add your handling code here:
+        RecetaMedica r = new RecetaMedica();
+        r.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_cmdRegresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -263,6 +283,7 @@ public class CertificadosMedicos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdRegresar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

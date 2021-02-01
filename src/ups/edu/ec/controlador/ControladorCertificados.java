@@ -32,7 +32,7 @@ public class ControladorCertificados {
 			idCertificado = 0;
 
 			while (rs.next()) {
-				idCertificado = rs.getInt("idCertficado");
+				idCertificado = rs.getInt("idCertificado");
 			}
 
 			rs.close();

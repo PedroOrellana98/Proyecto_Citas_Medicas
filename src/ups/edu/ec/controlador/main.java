@@ -15,10 +15,10 @@ public class main {
 	    // ControladorCitas ct = new ControladorCitas();
             // ct.MostrarSecre();
             
-            
+             
            //RegistroCitas citas = new RegistroCitas();
           // citas.setVisible(true);
-        OrdenMedica r = new OrdenMedica();
+        RecetaMedica r = new RecetaMedica();
          r.setVisible(true);
 		
 	}

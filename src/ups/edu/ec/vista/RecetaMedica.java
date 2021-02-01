@@ -63,7 +63,6 @@ public class RecetaMedica extends javax.swing.JFrame {
         txtAgregar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableReceta = new javax.swing.JTable();
-        cmdImprimir = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtNota = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
@@ -215,8 +214,6 @@ public class RecetaMedica extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableReceta);
 
-        cmdImprimir.setText("Imprimir");
-
         txtNota.setColumns(20);
         txtNota.setRows(5);
         jScrollPane3.setViewportView(txtNota);
@@ -233,6 +230,11 @@ public class RecetaMedica extends javax.swing.JFrame {
         });
 
         cmdOrden.setText("Orden Medica");
+        cmdOrden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdOrdenActionPerformed(evt);
+            }
+        });
 
         jLabel13.setText("Ingrese la dosis a aplicar:");
 
@@ -304,9 +306,7 @@ public class RecetaMedica extends javax.swing.JFrame {
                         .addComponent(cmdCertificado)
                         .addGap(26, 26, 26)
                         .addComponent(cmdOrden)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cmdImprimir)
-                        .addGap(41, 41, 41))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,8 +354,7 @@ public class RecetaMedica extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCertificado)
-                    .addComponent(cmdOrden)
-                    .addComponent(cmdImprimir))
+                    .addComponent(cmdOrden))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -492,9 +491,20 @@ public class RecetaMedica extends javax.swing.JFrame {
 
     private void cmdCertificadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCertificadoActionPerformed
         // TODO add your handling code here:
+   
         CertificadosMedicos c = new CertificadosMedicos();
         c.setVisible(true);
+        this.setVisible(false);
+       
+        
     }//GEN-LAST:event_cmdCertificadoActionPerformed
+
+    private void cmdOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdOrdenActionPerformed
+        // TODO add your handling code here:
+        OrdenMedica o = new OrdenMedica();
+        o.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_cmdOrdenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -535,7 +545,6 @@ public class RecetaMedica extends javax.swing.JFrame {
     private javax.swing.JButton cmdBuscar;
     private javax.swing.JButton cmdCertificado;
     private javax.swing.JButton cmdGuardar;
-    private javax.swing.JButton cmdImprimir;
     private javax.swing.JButton cmdOrden;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

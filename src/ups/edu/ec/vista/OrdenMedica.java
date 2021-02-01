@@ -168,6 +168,11 @@ public class OrdenMedica extends javax.swing.JFrame {
         });
 
         cmdRegresar.setText("Regresar");
+        cmdRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdRegresarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Orden Medica");
 
@@ -255,6 +260,14 @@ public class OrdenMedica extends javax.swing.JFrame {
         o.BuscarPaciente(txtPaciente.getText(), txtNombre, txtApellido,idPaciente);
 
     }//GEN-LAST:event_cmdBuscarActionPerformed
+
+    private void cmdRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRegresarActionPerformed
+        // TODO add your handling code here:
+        
+       RecetaMedica r = new RecetaMedica();
+       r.setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_cmdRegresarActionPerformed
 
     /**
      * @param args the command line arguments
