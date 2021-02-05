@@ -352,9 +352,9 @@ ControladorSecretaria cs = new ControladorSecretaria();
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Psecretaria ps=new Psecretaria();
-        ps.setVisible(true);
-        dispose();
+        Psecretaria p = new Psecretaria();
+        p.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void cmdBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBuscarActionPerformed
@@ -364,6 +364,9 @@ ControladorSecretaria cs = new ControladorSecretaria();
         cs.MostrarSecretariaPorNombre(jsecre);
         ct.BuscarPaciente(txtbuscar.getText(),txtpaciente,txtidpaciente);    
         ct.MostrarfechasPorId(jfechas, Integer.parseInt(txtidpaciente.getText()));
+        
+       
+       
     }//GEN-LAST:event_cmdBuscarActionPerformed
 
     private void txtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarActionPerformed
@@ -377,9 +380,12 @@ ControladorSecretaria cs = new ControladorSecretaria();
    //new java.sql.Date(jfecha.getDate().getTime())
          
         ct.InsertarCita(new java.sql.Date(jfecha.getDate().getTime()),Time.valueOf(LocalTime.parse(txthora.getText())),cs.MostrarSecretariaPorNombre(jsecre).getSelectedIndex(),Integer.parseInt(txtidpaciente.getText()),cm.MostrarMedicosPorNombre(jmedico).getSelectedIndex());
+      
          jsecre.removeAllItems();
          jmedico.removeAllItems();
           jfechas.removeAllItems();
+          
+          
         //  System.out.println(cm.MostrarMedicosPorNombre(jmedico).getItemCount());
        // System.out.println(cs.MostrarSecretariaPorNombre(jsecre).getItemCount());
     }//GEN-LAST:event_cmdRegistrarCitaActionPerformed

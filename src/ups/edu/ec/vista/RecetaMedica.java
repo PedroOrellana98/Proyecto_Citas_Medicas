@@ -63,7 +63,6 @@ public class RecetaMedica extends javax.swing.JFrame {
         txtAgregar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableReceta = new javax.swing.JTable();
-        btnRegresar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtNota = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
@@ -80,6 +79,7 @@ public class RecetaMedica extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         txtBM = new javax.swing.JTextField();
+        btnRegresar = new javax.swing.JToggleButton();
         jLabel9 = new javax.swing.JLabel();
         cmdBuscar = new javax.swing.JButton();
 
@@ -215,13 +215,6 @@ public class RecetaMedica extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableReceta);
 
-        btnRegresar.setText("Regresar");
-        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarActionPerformed(evt);
-            }
-        });
-
         txtNota.setColumns(20);
         txtNota.setRows(5);
         jScrollPane3.setViewportView(txtNota);
@@ -231,8 +224,18 @@ public class RecetaMedica extends javax.swing.JFrame {
         jLabel12.setText("Fecha de Emision:");
 
         cmdCertificado.setText("Generar Certficado Medico");
+        cmdCertificado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCertificadoActionPerformed(evt);
+            }
+        });
 
         cmdOrden.setText("Orden Medica");
+        cmdOrden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdOrdenActionPerformed(evt);
+            }
+        });
 
         jLabel13.setText("Ingrese la dosis a aplicar:");
 
@@ -246,6 +249,13 @@ public class RecetaMedica extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
             }
         });
 
@@ -306,7 +316,7 @@ public class RecetaMedica extends javax.swing.JFrame {
                         .addComponent(cmdOrden)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnRegresar)
-                        .addGap(41, 41, 41))))
+                        .addGap(38, 38, 38))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -490,10 +500,27 @@ public class RecetaMedica extends javax.swing.JFrame {
         cc.BuscarMedicamento(txtBM.getText(),txtMedicamento);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void cmdCertificadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCertificadoActionPerformed
+        // TODO add your handling code here:
+   
+        CertificadosMedicos c = new CertificadosMedicos();
+        c.setVisible(true);
+        this.setVisible(false);
+       
+        
+    }//GEN-LAST:event_cmdCertificadoActionPerformed
+
+    private void cmdOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdOrdenActionPerformed
+        // TODO add your handling code here:
+        OrdenMedica o = new OrdenMedica();
+        o.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_cmdOrdenActionPerformed
+
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
-        Psecretaria ps = new Psecretaria();
-        ps.setVisible(true);
+        Index i = new Index();
+        i.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
@@ -533,7 +560,7 @@ public class RecetaMedica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegresar;
+    private javax.swing.JToggleButton btnRegresar;
     private javax.swing.JButton cmdBuscar;
     private javax.swing.JButton cmdCertificado;
     private javax.swing.JButton cmdGuardar;

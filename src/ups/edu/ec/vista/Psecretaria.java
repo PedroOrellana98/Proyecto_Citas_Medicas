@@ -125,11 +125,6 @@ public class Psecretaria extends JFrame {
 		panel_2.setBounds(219, 72, 717, 403);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
-		
-		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setIcon(new ImageIcon(Index.class.getResource("/imagen/icons8_Today_96px.png")));
-		lblNewLabel_5.setBounds(417, 185, 101, 124);
-		panel_2.add(lblNewLabel_5);
                 
                 JButton btnRegistroM = new JButton("");
 		btnRegistroM.addActionListener(new ActionListener() {
@@ -144,34 +139,21 @@ public class Psecretaria extends JFrame {
 		btnRegistroM.setBorder(null);
 		btnRegistroM.setBounds(75, 185, 101, 124);
 		panel_2.add(btnRegistroM);
-		
-		/*JLabel lblNewLabel_5_1_1_1 = new JLabel("");
-		lblNewLabel_5_1_1_1.setIcon(new ImageIcon(Index.class.getResource("/imagen/yu (1).png")));
-		lblNewLabel_5_1_1_1.setBounds(258, 185, 101, 124);
-		panel_2.add(lblNewLabel_5_1_1_1);*/
-                
+		              
                 JButton btnReceta = new JButton("");
 		btnReceta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RecetaMedica rm = new RecetaMedica();
-				rm.setVisible(true);
+				Index i = new Index();
+				i.setVisible(true);
                                 dispose();
 			}
 		});
-		btnReceta.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/yu (1).png")));
+		btnReceta.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/volver.png")));
 		btnReceta.setBackground(null);
 		btnReceta.setBorder(null);
 		btnReceta.setBounds(258, 185, 101, 124);
 		panel_2.add(btnReceta);
 		
-		txtCalendarioMedico = new JTextField();
-		txtCalendarioMedico.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
-		txtCalendarioMedico.setForeground(new Color(244, 164, 96));
-		txtCalendarioMedico.setText("Calendario Medico");
-		txtCalendarioMedico.setBounds(396, 320, 126, 20);
-		txtCalendarioMedico.setBorder(null);
-		panel_2.add(txtCalendarioMedico);
-		txtCalendarioMedico.setColumns(10);
 		
 		txtRegistroPasiente = new JTextField();
 		txtRegistroPasiente.setText("Registro Pasiente");
@@ -192,12 +174,12 @@ public class Psecretaria extends JFrame {
 		panel_2.add(txtAgendarCitasMedicas);
 		
 		txtRegistroDeCitas = new JTextField();
-		txtRegistroDeCitas.setText("Registro certificados");
+		txtRegistroDeCitas.setText("Regresar");
 		txtRegistroDeCitas.setForeground(new Color(244, 164, 96));
 		txtRegistroDeCitas.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
 		txtRegistroDeCitas.setColumns(10);
 		txtRegistroDeCitas.setBorder(null);
-		txtRegistroDeCitas.setBounds(227, 320, 149, 20);
+		txtRegistroDeCitas.setBounds(280, 310, 149, 20);
 		panel_2.add(txtRegistroDeCitas);
 		
 		JButton btnRegistro = new JButton("");
