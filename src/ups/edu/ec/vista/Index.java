@@ -123,10 +123,13 @@ public class Index extends JFrame {
                                 ControladorLogin cl = new ControladorLogin();
                                 
                                 if (cl.LoginMedico(Usuario.getText(), password.getText()) == true) {
-                                    
+                                    RecetaMedica rc = new RecetaMedica();
+                                    rc.setVisible(true);
+                                    dispose();
                                  }else if(cl.LoginSecretaria(Usuario.getText(), password.getText()) == true){
                                      Psecretaria sec = new Psecretaria();
                                      sec.setVisible(true);
+                                     dispose();
                                  }
 				
 			}

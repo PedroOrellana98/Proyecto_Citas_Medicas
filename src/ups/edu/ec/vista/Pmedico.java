@@ -27,7 +27,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBoxMenuItem;
 
-public class Psecretaria extends JFrame {
+public class Pmedico extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -59,7 +59,7 @@ public class Psecretaria extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public  Psecretaria() {
+	public  Pmedico() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 952, 514);
 		contentPane = new JPanel();
@@ -91,7 +91,7 @@ public class Psecretaria extends JFrame {
 		panel.add(secUsuario);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/pizarra.png")));
+		lblNewLabel.setIcon(new ImageIcon(Pmedico.class.getResource("/imagen/pizarra.png")));
 		lblNewLabel.setBounds(47, 270, 146, 142);
 		panel.add(lblNewLabel);
 		
@@ -125,6 +125,11 @@ public class Psecretaria extends JFrame {
 		panel_2.setBounds(219, 72, 717, 403);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
+		
+		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setIcon(new ImageIcon(Index.class.getResource("/imagen/icons8_Today_96px.png")));
+		lblNewLabel_5.setBounds(417, 185, 101, 124);
+		panel_2.add(lblNewLabel_5);
                 
                 JButton btnRegistroM = new JButton("");
 		btnRegistroM.addActionListener(new ActionListener() {
@@ -134,26 +139,39 @@ public class Psecretaria extends JFrame {
                                 dispose();
 			}
 		});
-		btnRegistroM.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/agenda.png")));
+		btnRegistroM.setIcon(new ImageIcon(Pmedico.class.getResource("/imagen/agenda.png")));
 		btnRegistroM.setBackground(null);
 		btnRegistroM.setBorder(null);
 		btnRegistroM.setBounds(75, 185, 101, 124);
 		panel_2.add(btnRegistroM);
-		              
+		
+		/*JLabel lblNewLabel_5_1_1_1 = new JLabel("");
+		lblNewLabel_5_1_1_1.setIcon(new ImageIcon(Index.class.getResource("/imagen/yu (1).png")));
+		lblNewLabel_5_1_1_1.setBounds(258, 185, 101, 124);
+		panel_2.add(lblNewLabel_5_1_1_1);*/
+                
                 JButton btnReceta = new JButton("");
 		btnReceta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Index i = new Index();
-				i.setVisible(true);
+				RecetaMedica rm = new RecetaMedica();
+				rm.setVisible(true);
                                 dispose();
 			}
 		});
-		btnReceta.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/volver.png")));
+		btnReceta.setIcon(new ImageIcon(Pmedico.class.getResource("/imagen/yu (1).png")));
 		btnReceta.setBackground(null);
 		btnReceta.setBorder(null);
 		btnReceta.setBounds(258, 185, 101, 124);
 		panel_2.add(btnReceta);
 		
+		txtCalendarioMedico = new JTextField();
+		txtCalendarioMedico.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
+		txtCalendarioMedico.setForeground(new Color(244, 164, 96));
+		txtCalendarioMedico.setText("Calendario Medico");
+		txtCalendarioMedico.setBounds(396, 320, 126, 20);
+		txtCalendarioMedico.setBorder(null);
+		panel_2.add(txtCalendarioMedico);
+		txtCalendarioMedico.setColumns(10);
 		
 		txtRegistroPasiente = new JTextField();
 		txtRegistroPasiente.setText("Registro Pasiente");
@@ -174,12 +192,12 @@ public class Psecretaria extends JFrame {
 		panel_2.add(txtAgendarCitasMedicas);
 		
 		txtRegistroDeCitas = new JTextField();
-		txtRegistroDeCitas.setText("Regresar");
+		txtRegistroDeCitas.setText("Registro certificados");
 		txtRegistroDeCitas.setForeground(new Color(244, 164, 96));
 		txtRegistroDeCitas.setFont(new Font("Yu Gothic UI", Font.PLAIN, 14));
 		txtRegistroDeCitas.setColumns(10);
 		txtRegistroDeCitas.setBorder(null);
-		txtRegistroDeCitas.setBounds(280, 310, 149, 20);
+		txtRegistroDeCitas.setBounds(227, 320, 149, 20);
 		panel_2.add(txtRegistroDeCitas);
 		
 		JButton btnRegistro = new JButton("");
@@ -190,7 +208,7 @@ public class Psecretaria extends JFrame {
                                 dispose();
 			}
 		});
-		btnRegistro.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/icons8_User_96px_2.png")));
+		btnRegistro.setIcon(new ImageIcon(Pmedico.class.getResource("/imagen/icons8_User_96px_2.png")));
 		btnRegistro.setBackground(null);
 		btnRegistro.setBorder(null);
 		btnRegistro.setBounds(258, 39, 89, 86);
@@ -204,7 +222,7 @@ public class Psecretaria extends JFrame {
                                 dispose();
 			}
 		});
-		btnRegistro_1.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/cuenta.png")));
+		btnRegistro_1.setIcon(new ImageIcon(Pmedico.class.getResource("/imagen/cuenta.png")));
 		btnRegistro_1.setBorder(null);
 		btnRegistro_1.setBackground((Color) null);
 		btnRegistro_1.setBounds(418, 39, 89, 86);
@@ -227,7 +245,7 @@ public class Psecretaria extends JFrame {
                                 dispose();
 			}
 		});
-		btnRegistro_1_1.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/doctor.png")));
+		btnRegistro_1_1.setIcon(new ImageIcon(Pmedico.class.getResource("/imagen/doctor.png")));
 		btnRegistro_1_1.setBorder(null);
 		btnRegistro_1_1.setBackground((Color) null);
 		btnRegistro_1_1.setBounds(75, 39, 89, 86);
@@ -250,7 +268,7 @@ public class Psecretaria extends JFrame {
                                 dispose();
 			}
 		});
-		btnPago.setIcon(new ImageIcon(Psecretaria.class.getResource("/imagen/tarjeta-de-debito.png")));
+		btnPago.setIcon(new ImageIcon(Pmedico.class.getResource("/imagen/tarjeta-de-debito.png")));
 		btnPago.setBorder(null);
 		btnPago.setBackground((Color) null);
 		btnPago.setBounds(547, 39, 89, 86);

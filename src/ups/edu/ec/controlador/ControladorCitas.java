@@ -262,7 +262,7 @@ public class ControladorCitas {
 			String SQL = "SELECT c.fecha FROM CitaMedica c , Paciente p where c.Paciente_idPaciente = p.idPaciente And p.idPaciente= "+idpaciente+" ";
 			Statement stmt = conexionBD.con.createStatement();
 			ResultSet rs = stmt.executeQuery(SQL);
-                        fechas.addItem("Seleccione una opciÃ³n");
+                        fechas.addItem("Seleccione una opción");
 			while (rs.next()) {
 				fechas.addItem(rs.getDate("c.fecha"));
                                 
@@ -278,5 +278,7 @@ public class ControladorCitas {
    
         return fechas;
 }
+
+ 
     
 }
